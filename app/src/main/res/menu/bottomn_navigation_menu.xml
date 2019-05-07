@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="ویترین"
+        android:icon="@drawable/ic_star"
+        android:id="@+id/vitrin"
+        />
+    <item android:title="دسته بندی"
+        android:icon="@drawable/ic_menu"
+        android:id="@+id/categori"
+        />
+    <item android:title="فیلم های من"
+        android:icon="@drawable/videocam"
+        android:id="@+id/my_video"
+        />
+</menu>

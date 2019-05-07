@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="190dp"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".activities.MainActivity"
+    >
+
+
+    <ImageView
+        android:id="@+id/card_beauty"
+        android:layout_width="match_parent"
+        android:layout_height="140dp" />
+
+
+    <TextView
+        android:id="@+id/tvBeauty"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="7dp"
+        android:text="رازهای زیبایی"
+        android:textColor="#000"
+        android:textSize="12dp" />
+
+
+
+</LinearLayout>

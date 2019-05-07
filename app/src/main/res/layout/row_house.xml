@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="170dp"
+    android:orientation="vertical"
+
+    tools:context=".activities.MainActivity"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_house"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="10dp"
+        app:riv_oval="false"
+        android:layout_height="145dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/shadow_6"/>
+
+    <TextView
+        android:id="@+id/tvBaner"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginRight="8dp"
+        android:text="ترفندهای خانه داری"
+        android:textColor="#000"
+        android:textSize="12dp"
+        android:layout_marginTop="5dp"/>
+
+
+
+
+
+</LinearLayout>
+
+
