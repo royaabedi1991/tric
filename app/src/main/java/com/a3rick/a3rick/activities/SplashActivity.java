@@ -9,9 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.GetSubResult;
-import com.a3rick.a3rick.webService.APIClient;
-import com.a3rick.a3rick.webService.APIInterface;
+import com.a3rick.a3rick.models.ApiModels.OTP.GetSubResult;
+import com.a3rick.a3rick.webService.OTP.APIClient;
+import com.a3rick.a3rick.webService.OTP.APIInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;

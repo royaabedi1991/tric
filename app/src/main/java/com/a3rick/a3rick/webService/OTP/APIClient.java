@@ -1,4 +1,4 @@
-package com.a3rick.a3rick.webService;
+package com.a3rick.a3rick.webService.OTP;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

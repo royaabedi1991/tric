@@ -2,7 +2,6 @@ package com.a3rick.a3rick.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.Fun;
+import com.a3rick.a3rick.models.RecyclerViewModels.Fun;
 
 import java.util.List;
 

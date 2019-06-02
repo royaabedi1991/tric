@@ -1,10 +1,7 @@
 package com.a3rick.a3rick.fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,90 +9,94 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.activities.BannerActivity;
-import com.a3rick.a3rick.activities.MainActivity;
 import com.a3rick.a3rick.adapters.BannerAdapter;
-import com.a3rick.a3rick.core.RecyclerItemClickListener;
-import com.a3rick.a3rick.fragments.dummy.DummyContent;
-import com.a3rick.a3rick.fragments.dummy.DummyContent.DummyItem;
-import com.a3rick.a3rick.models.Banner;
+import com.a3rick.a3rick.adapters.BeautyAdapter;
+import com.a3rick.a3rick.adapters.CoockAdapter;
+import com.a3rick.a3rick.adapters.FavoriteAdapter;
+import com.a3rick.a3rick.adapters.FunAdapter;
+import com.a3rick.a3rick.adapters.HouseAdapter;
+import com.a3rick.a3rick.models.RecyclerViewModels.Banner;
+import com.a3rick.a3rick.models.RecyclerViewModels.Beauty;
+import com.a3rick.a3rick.models.RecyclerViewModels.Coock;
+import com.a3rick.a3rick.models.RecyclerViewModels.Favorite;
+import com.a3rick.a3rick.models.RecyclerViewModels.Fun;
+import com.a3rick.a3rick.models.RecyclerViewModels.House;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
+
 public class VitrinFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public VitrinFragment() {
-    }
-
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static VitrinFragment newInstance(int columnCount) {
-        VitrinFragment fragment = new VitrinFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
-    }
+    int selectedItemId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
 
 
-            RecyclerView bannerRecycler = (RecyclerView)view.findViewById(R.id.recyceler_banner);
-            final BannerAdapter bannerAdapter = new BannerAdapter(this, getBanners());
 
-            bannerRecycler.setAdapter(bannerAdapter);
-            LinearLayoutManager bannerManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
-            bannerRecycler.setLayoutManager(bannerManager);
+// Set the adapter
 
-            bannerRecycler.addOnItemTouchListener(new RecyclerItemClickListener(getBaseContext(), new RecyclerItemClickListener.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    startActivity(new Intent(MainActivity.this, BannerActivity.class));
-                }
-            }));
-        }
+//BannerRecycler
+        RecyclerView bannerRecycler = (RecyclerView) view.findViewById(R.id.recyceler_banner);
+        LinearLayoutManager bannerManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        bannerRecycler.setLayoutManager(bannerManager);
+        BannerAdapter bannerAdapter = new BannerAdapter(getContext(), getBanners());
+        bannerRecycler.setAdapter(bannerAdapter);
+
+
+
+
+//FavoriteRecycler
+        RecyclerView favoriteRecyceler = (RecyclerView) view.findViewById(R.id.recyceler_Favorit);
+        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(getContext(), getFavorites());
+        favoriteRecyceler.setAdapter(favoriteAdapter);
+        LinearLayoutManager favoriteManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        favoriteRecyceler.setLayoutManager(favoriteManager);
+
+
+//BeautyRecycler
+        RecyclerView beautyRecycler = (RecyclerView) view.findViewById(R.id.recyceler_beauty_category);
+        BeautyAdapter beautyAdapter = new BeautyAdapter(getContext(), getBeauties());
+        beautyRecycler.setAdapter(beautyAdapter);
+        LinearLayoutManager beautyManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        beautyRecycler.setLayoutManager(beautyManager);
+
+
+//HouseRecycler
+
+        RecyclerView houseRecycler = (RecyclerView) view.findViewById(R.id.recyceler_khanedari_category);
+        HouseAdapter houseAdapter = new HouseAdapter(getContext(), getHouses());
+
+        houseRecycler.setAdapter(houseAdapter);
+        LinearLayoutManager houseManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        houseRecycler.setLayoutManager(houseManager);
+
+
+//CoockRecycler
+
+        RecyclerView coockRecycler = (RecyclerView) view.findViewById(R.id.recyceler_coock_category);
+        CoockAdapter coockAdapter = new CoockAdapter(getContext(), getCoockes());
+        coockRecycler.setAdapter(coockAdapter);
+        LinearLayoutManager coockManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        coockRecycler.setLayoutManager(coockManager);
+
+
+        //FunRecycler
+        RecyclerView funRecycler = (RecyclerView) view.findViewById(R.id.recyceler_fun_category);
+        FunAdapter funAdapter = new FunAdapter(getContext(), getFunes());
+        funRecycler.setAdapter(funAdapter);
+        LinearLayoutManager funManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        funRecycler.setLayoutManager(funManager);
+
         return view;
     }
+
+
+
+
     private List<Banner> getBanners() {
 
         List<Banner> banners = new ArrayList<>();
@@ -112,35 +113,120 @@ public class VitrinFragment extends Fragment {
         return banners;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+    private List<Fun> getFunes() {
+
+        List<Fun> funs = new ArrayList<>();
+        int[] drawables = new int[]{
+
+                R.drawable.pic_21,
+                R.drawable.pic_22,
+                R.drawable.pic_23,
+                R.drawable.pic_24,
+                R.drawable.pic_25,
+
+        };
+        for (int i = 0; i < 5; i++) {
+            Fun current = new Fun();
+            current.setResource(drawables[i]);
+            funs.add(current);
         }
+        return funs;
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    private List<Coock> getCoockes() {
+        List<Coock> coocks = new ArrayList<>();
+        int[] drawables = new int[]{
+                R.drawable.pic_16,
+                R.drawable.pic_17,
+                R.drawable.pic_18,
+                R.drawable.pic_19,
+                R.drawable.pic_20,
+        };
+        for (int i = 0; i < 5; i++) {
+            Coock current = new Coock();
+            current.setResorce(drawables[i]);
+
+            coocks.add(current);
+
+
+        }
+        return coocks;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+    private List<House> getHouses() {
+        List<House> houses = new ArrayList<>();
+        int[] drawables = new int[]{
+
+                R.drawable.pic_10,
+                R.drawable.pic_11,
+                R.drawable.pic_12,
+                R.drawable.pic_13,
+                R.drawable.pic_14,
+
+
+        };
+        for (int i = 0; i < 5; i++) {
+
+            House current = new House();
+            current.setResource(drawables[i]);
+            houses.add(current);
+
+        }
+        return houses;
     }
+
+
+    private List<Beauty> getBeauties() {
+
+        List<Beauty> beauties = new ArrayList<>();
+        int[] drawables = new int[]{
+                R.drawable.pic_5,
+                R.drawable.pic_4,
+                R.drawable.pic_6,
+                R.drawable.pic_7,
+                R.drawable.pic_8,
+                R.drawable.pic_9,
+                R.drawable.pic_5,
+
+
+        };
+
+        for (int i = 0; i < 7; i++) {
+
+            Beauty current = new Beauty();
+            current.setResource(drawables[i]);
+            beauties.add(current);
+
+        }
+        return beauties;
+
+
+    }
+
+
+    private List<Favorite> getFavorites() {
+        List<Favorite> favorites = new ArrayList<>();
+        int[] drawables = {
+                R.drawable.pic_1,
+                R.drawable.pic_2,
+                R.drawable.pic_3,
+                R.drawable.pic_1,
+                R.drawable.pic_2,
+
+
+        };
+
+        for (int i = 0; i < 5; i++) {
+
+            Favorite current = new Favorite();
+            current.setRecource(drawables[i]);
+            favorites.add(current);
+
+
+        }
+        return favorites;
+
+    }
+
+
 }

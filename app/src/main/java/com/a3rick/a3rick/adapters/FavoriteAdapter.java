@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.Favorite;
+import com.a3rick.a3rick.models.RecyclerViewModels.Favorite;
 
 import java.util.List;
 

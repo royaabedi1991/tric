@@ -1,15 +1,22 @@
-package com.a3rick.a3rick.models;
 
+package com.a3rick.a3rick.models.ApiModels.Teepeto.Results;
+
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetSubResult {
+import java.util.List;
+
+public class GetContentResult {
 
     @SerializedName("IsSuccessful")
+    @Expose
     private Boolean isSuccessful;
     @SerializedName("Message")
-    private String message;
+    @Expose
+    private Object message;
     @SerializedName("Result")
-    private Boolean result;
+    @Expose
+    private List<Result_> result = null;
 
     public Boolean getIsSuccessful() {
         return isSuccessful;
@@ -19,19 +26,20 @@ public class GetSubResult {
         this.isSuccessful = isSuccessful;
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
 
-    public Boolean getResult() {
+    public List<Result_> getResult() {
         return result;
     }
 
-    public void setResult(Boolean result) {
+    public void setResult(List<Result_> result) {
         this.result = result;
     }
+
 }

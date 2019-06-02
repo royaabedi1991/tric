@@ -21,21 +21,33 @@
             android:background="@color/colorButumn">
 
             <TextView
+                android:id="@+id/tv_text_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="-20dp"
-                android:text="ویترین"
+
                 android:textColor="#000"
                 android:textSize="17dp" />
         </android.support.v7.widget.Toolbar>
 
-        <FrameLayout
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="55dp"
-            android:layout_marginBottom="55dp">
+            android:layout_marginBottom="55dp"
+            android:layout_marginTop="55dp">
 
-            <ScrollView
+        </android.support.v4.view.ViewPager>
+
+        <!--<FrameLayout-->
+            <!--android:id="@+id/home_container"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="55dp"-->
+            <!--android:layout_marginBottom="55dp">-->
+
+            <!--  <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="?attr/actionBarSize"
@@ -378,8 +390,8 @@
                 </LinearLayout>
 
 
-            </ScrollView>
-        </FrameLayout>
+            </ScrollView>-->
+
 
 
         <android.support.design.widget.BottomNavigationView

@@ -1,6 +1,7 @@
 package com.a3rick.a3rick.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.Banner;
-import com.a3rick.a3rick.models.Beauty;
-import com.a3rick.a3rick.models.Favorite;
+import com.a3rick.a3rick.activities.ContentActivity;
+import com.a3rick.a3rick.models.RecyclerViewModels.Beauty;
 
 import java.util.List;
 
@@ -46,7 +46,14 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull BeautyAdapter.Holder holder, int position) {
         holder.setData(position);
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context1 = view.getContext();
+                Intent intent= new Intent(context1, ContentActivity.class);
+                context1.startActivity(intent);
+            }
+        });
     }
 
     @Override

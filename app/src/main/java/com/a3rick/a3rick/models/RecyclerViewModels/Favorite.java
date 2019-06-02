@@ -1,4 +1,4 @@
-package com.a3rick.a3rick.models;
+package com.a3rick.a3rick.models.RecyclerViewModels;
 
 public class Favorite {
 

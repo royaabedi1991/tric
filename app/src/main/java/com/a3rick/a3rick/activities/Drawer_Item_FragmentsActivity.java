@@ -33,7 +33,7 @@ public class Drawer_Item_FragmentsActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_fragments_nav_item);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_drawer);
         setSupportActionBar(toolbar);
         navTitle = getResources().getStringArray(R.array.nav_menu_items);
 
@@ -77,7 +77,7 @@ public class Drawer_Item_FragmentsActivity extends AppCompatActivity {
         CURRENT_TAG = tag;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container, getFragment());
+        transaction.replace(R.id.container_drawer, getFragment());
 
         transaction.commit();
     }

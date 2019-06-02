@@ -1,12 +1,13 @@
-package com.a3rick.a3rick.models;
+package com.a3rick.a3rick.models.RecyclerViewModels;
 
 import android.widget.TextView;
 
-public class Fun {
+public class House {
+
     private int resource;
     private TextView textView;
 
-    public Fun() {
+    public House() {
 
     }
 
@@ -26,8 +27,10 @@ public class Fun {
         this.textView = textView;
     }
 
-    public Fun(int resource, TextView textView) {
+    public House(int resource, TextView textView) {
         this.resource = resource;
         this.textView = textView;
+
+
     }
 }

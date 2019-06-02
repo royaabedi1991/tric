@@ -1,5 +1,5 @@
 
-package com.a3rick.a3rick.models;
+package com.a3rick.a3rick.models.ApiModels.OTP;
 
 
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +18,7 @@ public class ApiResult {
     private Boolean IsSuccessful;
     @SerializedName("Message")
     private String Message;
-    @SerializedName("Result")
+    @SerializedName("Result_")
     private Long Result;
 
     public Boolean getIsSuccessful() {

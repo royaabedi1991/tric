@@ -15,9 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.ApiResult;
-import com.a3rick.a3rick.webService.APIClient;
-import com.a3rick.a3rick.webService.APIInterface;
+import com.a3rick.a3rick.models.ApiModels.OTP.ApiResult;
+import com.a3rick.a3rick.webService.OTP.APIClient;
+import com.a3rick.a3rick.webService.OTP.APIInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -78,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                     result = response.body().getResult();
 
 
-                    if (isSucessful == true & result > 0) {
+                    if (isSucessful == true &  result> 0) {
                         Intent intent = new Intent(RegisterActivity.this, SubscribeActivity.class);
                         finish();
                         intent.putExtra("NUMBER", etMobileNumber.getText().toString());

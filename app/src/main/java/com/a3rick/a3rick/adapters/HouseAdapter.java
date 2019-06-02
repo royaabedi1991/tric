@@ -7,10 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.Favorite;
-import com.a3rick.a3rick.models.House;
+import com.a3rick.a3rick.models.RecyclerViewModels.House;
 
 import java.util.List;
 

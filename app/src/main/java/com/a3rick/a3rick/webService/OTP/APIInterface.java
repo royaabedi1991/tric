@@ -1,7 +1,7 @@
-package com.a3rick.a3rick.webService;
+package com.a3rick.a3rick.webService.OTP;
 
-import com.a3rick.a3rick.models.ApiResult;
-import com.a3rick.a3rick.models.GetSubResult;
+import com.a3rick.a3rick.models.ApiModels.OTP.ApiResult;
+import com.a3rick.a3rick.models.ApiModels.OTP.GetSubResult;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -25,9 +25,8 @@ public interface APIInterface {
     @FormUrlEncoded
     Call <ApiResult> subscribeUserViaCode (@Field("ServiceId") String ServiceId, @Field("TransactionId") String TransactionId, @Field("Pin") String Pin);
 
-
     @GET ("Subscription/GetSubscriptionState")
-    Call <GetSubResult> getSubRequest (@Query("MobileNumber") String MobileNumber, @Query("ServiceId") int ServiceId  );
+     Call <GetSubResult> getSubRequest (@Query("MobileNumber") String MobileNumber, @Query("ServiceId") int ServiceId  );
 
 }
 
