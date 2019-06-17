@@ -21,7 +21,7 @@
         android:background="@drawable/shadow_6"/>
 
     <TextView
-        android:id="@+id/tvBaner"
+        android:id="@+id/tvHouse"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginRight="8dp"

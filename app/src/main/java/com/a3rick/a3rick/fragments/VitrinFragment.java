@@ -14,13 +14,10 @@ import com.a3rick.a3rick.adapters.BeautyAdapter;
 import com.a3rick.a3rick.adapters.CoockAdapter;
 import com.a3rick.a3rick.adapters.FavoriteAdapter;
 import com.a3rick.a3rick.adapters.FunAdapter;
-import com.a3rick.a3rick.adapters.HouseAdapter;
+import com.a3rick.a3rick.adapters.HoseAdapter;
+import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
 import com.a3rick.a3rick.models.RecyclerViewModels.Banner;
-import com.a3rick.a3rick.models.RecyclerViewModels.Beauty;
-import com.a3rick.a3rick.models.RecyclerViewModels.Coock;
 import com.a3rick.a3rick.models.RecyclerViewModels.Favorite;
-import com.a3rick.a3rick.models.RecyclerViewModels.Fun;
-import com.a3rick.a3rick.models.RecyclerViewModels.House;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +32,6 @@ public class VitrinFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
 
-
-
 // Set the adapter
 
 //BannerRecycler
@@ -45,8 +40,6 @@ public class VitrinFragment extends Fragment {
         bannerRecycler.setLayoutManager(bannerManager);
         BannerAdapter bannerAdapter = new BannerAdapter(getContext(), getBanners());
         bannerRecycler.setAdapter(bannerAdapter);
-
-
 
 
 //FavoriteRecycler
@@ -59,7 +52,7 @@ public class VitrinFragment extends Fragment {
 
 //BeautyRecycler
         RecyclerView beautyRecycler = (RecyclerView) view.findViewById(R.id.recyceler_beauty_category);
-        BeautyAdapter beautyAdapter = new BeautyAdapter(getContext(), getBeauties());
+        BeautyAdapter beautyAdapter = new BeautyAdapter(getContext(), getResults());
         beautyRecycler.setAdapter(beautyAdapter);
         LinearLayoutManager beautyManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
         beautyRecycler.setLayoutManager(beautyManager);
@@ -68,7 +61,7 @@ public class VitrinFragment extends Fragment {
 //HouseRecycler
 
         RecyclerView houseRecycler = (RecyclerView) view.findViewById(R.id.recyceler_khanedari_category);
-        HouseAdapter houseAdapter = new HouseAdapter(getContext(), getHouses());
+        HoseAdapter houseAdapter = new HoseAdapter(getContext(), getResults());
 
         houseRecycler.setAdapter(houseAdapter);
         LinearLayoutManager houseManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
@@ -78,7 +71,7 @@ public class VitrinFragment extends Fragment {
 //CoockRecycler
 
         RecyclerView coockRecycler = (RecyclerView) view.findViewById(R.id.recyceler_coock_category);
-        CoockAdapter coockAdapter = new CoockAdapter(getContext(), getCoockes());
+        CoockAdapter coockAdapter = new CoockAdapter(getContext(), getResults());
         coockRecycler.setAdapter(coockAdapter);
         LinearLayoutManager coockManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
         coockRecycler.setLayoutManager(coockManager);
@@ -86,12 +79,27 @@ public class VitrinFragment extends Fragment {
 
         //FunRecycler
         RecyclerView funRecycler = (RecyclerView) view.findViewById(R.id.recyceler_fun_category);
-        FunAdapter funAdapter = new FunAdapter(getContext(), getFunes());
+        FunAdapter funAdapter = new FunAdapter(getContext(), getResults());
         funRecycler.setAdapter(funAdapter);
         LinearLayoutManager funManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
         funRecycler.setLayoutManager(funManager);
 
         return view;
+    }
+
+    private List<Result_> getResults() {
+        List<Result_> result_s = new ArrayList<>();
+
+        for (int i = 0; i < 22; i++) {
+
+            Result_ current = new Result_();
+
+            result_s.add(current);
+
+        }
+        return result_s;
+
+
     }
 
 
@@ -112,98 +120,6 @@ public class VitrinFragment extends Fragment {
         }
         return banners;
     }
-
-    private List<Fun> getFunes() {
-
-        List<Fun> funs = new ArrayList<>();
-        int[] drawables = new int[]{
-
-                R.drawable.pic_21,
-                R.drawable.pic_22,
-                R.drawable.pic_23,
-                R.drawable.pic_24,
-                R.drawable.pic_25,
-
-        };
-        for (int i = 0; i < 5; i++) {
-            Fun current = new Fun();
-            current.setResource(drawables[i]);
-            funs.add(current);
-        }
-        return funs;
-    }
-
-    private List<Coock> getCoockes() {
-        List<Coock> coocks = new ArrayList<>();
-        int[] drawables = new int[]{
-                R.drawable.pic_16,
-                R.drawable.pic_17,
-                R.drawable.pic_18,
-                R.drawable.pic_19,
-                R.drawable.pic_20,
-        };
-        for (int i = 0; i < 5; i++) {
-            Coock current = new Coock();
-            current.setResorce(drawables[i]);
-
-            coocks.add(current);
-
-
-        }
-        return coocks;
-    }
-
-    private List<House> getHouses() {
-        List<House> houses = new ArrayList<>();
-        int[] drawables = new int[]{
-
-                R.drawable.pic_10,
-                R.drawable.pic_11,
-                R.drawable.pic_12,
-                R.drawable.pic_13,
-                R.drawable.pic_14,
-
-
-        };
-        for (int i = 0; i < 5; i++) {
-
-            House current = new House();
-            current.setResource(drawables[i]);
-            houses.add(current);
-
-        }
-        return houses;
-    }
-
-
-    private List<Beauty> getBeauties() {
-
-        List<Beauty> beauties = new ArrayList<>();
-        int[] drawables = new int[]{
-                R.drawable.pic_5,
-                R.drawable.pic_4,
-                R.drawable.pic_6,
-                R.drawable.pic_7,
-                R.drawable.pic_8,
-                R.drawable.pic_9,
-                R.drawable.pic_5,
-
-
-        };
-
-        for (int i = 0; i < 7; i++) {
-
-            Beauty current = new Beauty();
-            current.setResource(drawables[i]);
-            beauties.add(current);
-
-        }
-        return beauties;
-
-
-    }
-
-
     private List<Favorite> getFavorites() {
         List<Favorite> favorites = new ArrayList<>();
         int[] drawables = {

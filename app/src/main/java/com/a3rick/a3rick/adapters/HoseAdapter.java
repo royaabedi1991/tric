@@ -25,12 +25,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
+public class HoseAdapter extends RecyclerView.Adapter<HoseAdapter.Holder> {
     private LayoutInflater inflater;
     List<Result_> result_s;
 
 
-    public BeautyAdapter(Context context, List<Result_> result_s) {
+    public HoseAdapter(Context context, List<Result_> result_s) {
         this.result_s = result_s;
         inflater = LayoutInflater.from(context);
     }
@@ -38,8 +38,8 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
     @NonNull
     @Override
-    public BeautyAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Holder holder = new Holder(inflater.inflate(R.layout.row_beauty, parent, false));
+    public HoseAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Holder holder = new Holder(inflater.inflate(R.layout.row_house, parent, false));
 
         holder.getContents();
         return holder;
@@ -47,7 +47,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
 
     @Override
-    public void onBindViewHolder(@NonNull BeautyAdapter.Holder holder, final int position) {
+    public void onBindViewHolder(@NonNull HoseAdapter.Holder holder, final int position) {
         holder.setData(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,14 +82,14 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
         public Holder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.card_beauty);
-            textView = itemView.findViewById(R.id.tvBeauty);
+            imageView = itemView.findViewById(R.id.card_house);
+            textView = itemView.findViewById(R.id.tvHouse);
         }
 
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/11, 1, 20, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/10, 1, 20, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {

@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.Toolbar
@@ -17,26 +16,13 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorButumn">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layoutDirection="rtl"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="#000"
-                android:gravity="center"
-                android:textSize="20dp"
-                />
-
-
-
-        </LinearLayout>
-
-
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="20dp" />
 
 
     </android.support.v7.widget.Toolbar>
@@ -51,80 +37,41 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="8dp">
+
             <com.devbrackets.android.exomedia.ui.widget.VideoView
                 android:id="@+id/video_view"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                app:useDefaultControls="true"/>            <!--<com.makeramen.roundedimageview.RoundedImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="250dp"-->
-                <!--android:background="@drawable/sample"-->
-                <!--app:riv_corner_radius="8dp"-->
+                app:useDefaultControls="true" />
 
 
-                <!--&gt;-->
-
-            <!--</com.makeramen.roundedimageview.RoundedImageView>-->
-
-
-            <LinearLayout
+            <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layoutDirection="ltr"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/ic_share_black_24dp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="60dp"
-                    android:src="@drawable/ic_favorite_black_24dp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="90dp"
-                    android:src="@drawable/ic_bookmark_black_24dp" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="95dp"
-                    android:src="@drawable/ic_arrow_downward_black_24dp" />
-
-
-            </LinearLayout>
+            </android.support.design.widget.CoordinatorLayout>
 
 
             <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
+                android:id="@+id/tvSubject"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-
-                android:textSize="25dp"
-                android:textColor="#000"
                 android:fontFamily=""
-                />
+                android:textColor="#000"
+                android:textSize="17dp" />
+
+
             <TextView
-                android:id="@+id/tvBanner"
-                android:layout_width="match_parent"
+                android:id="@+id/tvBody"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20dp" />
+                android:textColor="#000"
+                android:textSize="13dp" />
 
         </LinearLayout>
 

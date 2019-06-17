@@ -17,23 +17,13 @@ import com.a3rick.a3rick.models.RecyclerViewModels.Banner;
 
 import java.util.List;
 
-import javax.xml.transform.Result;
-
 public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.Holder> {
+
+
 
     private List<Banner> banners;
     private LayoutInflater inflater;
     private Context context;
-
-    private Boolean isSuccessful;
-    private Object message;
-    private List<Result> result;
-    String Token = "{{Token}}";
-    int CategoryId;
-    int PageNumber;
-    int RowCount;
-    String QueryType = "LastItem";
-    List<Integer> TagIds;
 
 
     public BannerAdapter(List<Banner> banners, LayoutInflater inflater, Context context) {
@@ -57,12 +47,14 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.Holder> {
 
         Holder holder = new Holder(inflater.inflate(R.layout.row_banner, parent, false));
         return holder;
+
+
+
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull BannerAdapter.Holder holder, final int position) {
-        holder.setData(position);
         holder.setData(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -127,12 +119,11 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.Holder> {
 
 
         public void setData(int position) {
+
             Banner current = banners.get(position);
             imageView.setImageResource(current.getRecource());
 
 
         }
-
-
     }
 }
