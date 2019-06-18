@@ -1,5 +1,6 @@
 package com.a3rick.a3rick.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,8 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
+import com.a3rick.a3rick.activities.BeautyCategoryActivity;
+import com.a3rick.a3rick.activities.CoockCategoryActivity;
+import com.a3rick.a3rick.activities.FunCategoryActivity;
+import com.a3rick.a3rick.activities.HouseCategoryActivity;
 import com.a3rick.a3rick.adapters.BannerAdapter;
 import com.a3rick.a3rick.adapters.BeautyAdapter;
 import com.a3rick.a3rick.adapters.CoockAdapter;
@@ -24,13 +30,52 @@ import java.util.List;
 
 
 public class VitrinFragment extends Fragment {
-
-    int selectedItemId;
+    TextView seeAllBeauty;
+    TextView seeAllCoock;
+    TextView seeAllHouse;
+    TextView seeAllFun;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
+
+
+        seeAllBeauty = view.findViewById(R.id.seen_all_beauity);
+        seeAllCoock = view.findViewById(R.id.seen_all_coock);
+        seeAllHouse = view.findViewById(R.id.seen_all_house);
+        seeAllFun = view.findViewById(R.id.seen_all_fun);
+
+        seeAllBeauty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), BeautyCategoryActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        seeAllCoock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CoockCategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        seeAllHouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HouseCategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        seeAllFun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FunCategoryActivity.class);
+                startActivity(intent);
+            }
+        });
 
 // Set the adapter
 
@@ -103,8 +148,6 @@ public class VitrinFragment extends Fragment {
     }
 
 
-
-
     private List<Banner> getBanners() {
 
         List<Banner> banners = new ArrayList<>();
@@ -120,6 +163,7 @@ public class VitrinFragment extends Fragment {
         }
         return banners;
     }
+
     private List<Favorite> getFavorites() {
         List<Favorite> favorites = new ArrayList<>();
         int[] drawables = {
@@ -143,6 +187,7 @@ public class VitrinFragment extends Fragment {
         return favorites;
 
     }
+
 
 
 }

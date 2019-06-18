@@ -8,10 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.adapters.CategoryAdapter;
-import com.a3rick.a3rick.models.RecyclerViewModels.Category;
+import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,59 +23,29 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
         RecyclerView categoryRecyceler = (RecyclerView) view.findViewById(R.id.category_recycler);
-        LinearLayoutManager categoryManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true);
+        LinearLayoutManager categoryManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         categoryRecyceler.setLayoutManager(categoryManager);
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), getCategory());
+        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), getResults());
         categoryRecyceler.setAdapter(categoryAdapter);
 
-//        categoryRecyceler.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Fragment fragment = new Fragment();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.home_container, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//
-//
-//
-//            }
-//        });
+
         return view;
     }
 
-    private List<Category> getCategory() {
-        List<Category> categories = new ArrayList<>();
+private List<Result_> getResults() {
+    List<Result_> result_s = new ArrayList<>();
 
-        int[] drawables = new int[]{
+    for (int i = 0; i < 3; i++) {
 
-                R.drawable.pic_10,
-                R.drawable.pic_24,
-                R.drawable.pic_23,
-                R.drawable.pic_25,
+        Result_ current = new Result_();
 
-
-        };
-
-        String[] titles = new String[]{
-                "سرگرمی",
-                "آشپزی",
-                "زیبایی",
-                "خانه داری",
+        result_s.add(current);
 
 
-        };
 
-
-        for (int i = 0; i < 4; i++) {
-            Category current = new Category();
-            current.setResource(drawables[i]);
-            current.setTitle(titles[i]);
-            categories.add(current);
-        }
-        return categories;
     }
+    return result_s;
 
+
+}
 }

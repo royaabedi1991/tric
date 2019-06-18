@@ -157,6 +157,7 @@ tools:context=".activities.SubscribeActivity">
                         android:src="@drawable/ic_chevron_left_black_24dp" />
 
                     <TextView
+                        android:id="@+id/seen_all_beauity"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
@@ -214,6 +215,7 @@ tools:context=".activities.SubscribeActivity">
                         android:src="@drawable/ic_chevron_left_black_24dp" />
 
                     <TextView
+                        android:id="@+id/seen_all_house"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
@@ -266,6 +268,7 @@ tools:context=".activities.SubscribeActivity">
                         android:src="@drawable/ic_chevron_left_black_24dp" />
 
                     <TextView
+                        android:id="@+id/seen_all_coock"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
@@ -279,6 +282,7 @@ tools:context=".activities.SubscribeActivity">
 
 
                     <TextView
+
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="120dp"
@@ -320,6 +324,7 @@ tools:context=".activities.SubscribeActivity">
                         android:src="@drawable/ic_chevron_left_black_24dp" />
 
                     <TextView
+                        android:id="@+id/seen_all_fun"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"

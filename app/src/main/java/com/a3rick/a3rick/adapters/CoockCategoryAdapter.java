@@ -12,10 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.activities.BeautyCategoryActivity;
-import com.a3rick.a3rick.activities.CoockCategoryActivity;
-import com.a3rick.a3rick.activities.FunCategoryActivity;
-import com.a3rick.a3rick.activities.HouseCategoryActivity;
+import com.a3rick.a3rick.activities.ContentActivity;
 import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.GetContentResult;
 import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
 import com.a3rick.a3rick.webService.Teepeto.FileApi;
@@ -28,12 +25,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder> {
+public class CoockCategoryAdapter extends RecyclerView.Adapter<CoockCategoryAdapter.Holder> {
     private LayoutInflater inflater;
     List<Result_> result_s;
 
 
-    public CategoryAdapter(Context context, List<Result_> result_s) {
+    public CoockCategoryAdapter(Context context, List<Result_> result_s) {
         this.result_s = result_s;
         inflater = LayoutInflater.from(context);
     }
@@ -41,8 +38,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
     @NonNull
     @Override
-    public CategoryAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Holder holder = new Holder(inflater.inflate(R.layout.row_category_frag, parent, false));
+    public CoockCategoryAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Holder holder = new Holder(inflater.inflate(R.layout.row_coock_category, parent, false));
 
         holder.getContents();
         return holder;
@@ -50,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.Holder holder, final int position) {
+    public void onBindViewHolder(@NonNull CoockCategoryAdapter.Holder holder, final int position) {
         holder.setData(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,47 +55,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
 
                 Result_ current = result_s.get(position);
-
-                switch (position){
-
-                    case 0:
-                        Intent intent0 = new Intent(v.getContext(), BeautyCategoryActivity.class);
-                        v.getContext().startActivity(intent0);
-                        break;
-
-                    case 1:
-                        Intent intent1 = new Intent(v.getContext(), HouseCategoryActivity.class);
-                        v.getContext().startActivity(intent1);
-                        break;
-
-                    case 2:
-                        Intent intent2 = new Intent(v.getContext(), CoockCategoryActivity.class);
-                        v.getContext().startActivity(intent2);
-                        break;
-
-                    case 3:
-                        Intent intent3 = new Intent(v.getContext(), FunCategoryActivity.class);
-                        v.getContext().startActivity(intent3);
-                        break;
+                Intent intent = new Intent(v.getContext(), ContentActivity.class);
 
 
 
-
-
-
-
-                }
-
-
-
-
-
-//                intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
-//                intent.putExtra("SUBJECT", current.getSubject());
-//                intent.putExtra("BODY", current.getBody());
-//                intent.putExtra("HEADERIMAGE", current.getHeaderImageFileAddress());
-
-
+                intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
+                intent.putExtra("SUBJECT", current.getSubject());
+                intent.putExtra("BODY", current.getBody());
+                v.getContext().startActivity(intent);
             }
         });
 
@@ -118,14 +82,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
         public Holder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imgage_category);
-            textView = itemView.findViewById(R.id.tv_categori);
+            imageView = itemView.findViewById(R.id.card_category_coock);
+            textView = itemView.findViewById(R.id.tv_category_coock);
         }
 
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/20, 1, 4, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/12, 1, 50, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {

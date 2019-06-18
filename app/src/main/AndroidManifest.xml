@@ -15,8 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.ContentActivity"></activity>
-        <activity android:name=".activities.CategoryActivity"></activity>
+        <activity android:name=".activities.FunCategoryActivity"></activity>
+        <activity android:name=".activities.HouseCategoryActivity" />
+        <activity android:name=".activities.CoockCategoryActivity" />
+        <activity android:name=".activities.BeautyCategoryActivity" />
+        <activity android:name=".activities.ContentActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
