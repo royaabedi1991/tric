@@ -1,4 +1,8 @@
 <resources>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
     <string name="app_name">تریک</string>
     <string name="title_activity_navigation_drawer">تریک</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

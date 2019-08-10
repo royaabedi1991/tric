@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import retrofit2.Response;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RegisterActivity extends AppCompatActivity {
+    private ProgressBar progressBar;
     private EditText etMobileNumber;
     private TextView massage;
     private Button register;
@@ -33,6 +35,9 @@ public class RegisterActivity extends AppCompatActivity {
     Boolean isSucessful;
     Long result;
     SharedPreferences.Editor editor;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar=findViewById(R.id.pr_register);
+                progressBar.setVisibility(View.VISIBLE);
                 editor.putString("PHONENUMBER", String.valueOf(etMobileNumber.getText()));
                 editor.apply();
                 registerUser(String.valueOf(etMobileNumber.getText()), ServiceId, Channel);
@@ -109,48 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-//        Call<ApiResult> call1 =   apiInterface.subscribeUser("11",1169921,3138);
-//        call1.enqueue(new Callback<ApiResult>() {
-//            @Override
-//            public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
-//                Log.e("fdfa","Fdfsa");
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ApiResult> call, Throwable t) {
-//                Log.e("fdfa","Fdfsa");
-//            }
-//        });
-//        call.enqueue(new Callback<ApiResult>() {
-//            @Override
-//            public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
-//
-//                if (response.body().getIsSuccessful() == true & (response.body().getResult() > 0)) {
-//                    Intent intent = new Intent(RegisterActivity.this, SubscribeActivity.class);
-//                    intent.putExtra("RESULT", response.body().getResult());
-//                    startActivity(intent);
-//                    Toast.makeText(RegisterActivity.this, "درخواست عضویت با موفقیت انجام شد "
-//                            , Toast.LENGTH_LONG).show();
-//
-//
-//                } else if (response.body().getIsSuccessful() == false & (response.body().getResult() == 0)) {
-//                    massage.setText("این سرویس برای مشترکین همراه اول میباشد");
-//                } else if
-//                        (response.body().getIsSuccessful() == true & (response.body().getResult() == -1)) {
-//                    getConfirmviaCode();
-//                }
-//
-//            }
-//
-//
-//            @Override
-//            public void onFailure(Call<ApiResult> call, Throwable t) {
-//                Log.e("tag", t.toString());
-//            }
-//        })
 
-
-//        ;
     }
 
 

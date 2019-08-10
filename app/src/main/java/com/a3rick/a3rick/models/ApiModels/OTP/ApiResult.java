@@ -18,7 +18,7 @@ public class ApiResult {
     private Boolean IsSuccessful;
     @SerializedName("Message")
     private String Message;
-    @SerializedName("Result_")
+    @SerializedName("Result")
     private Long Result;
 
     public Boolean getIsSuccessful() {

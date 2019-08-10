@@ -11,12 +11,12 @@
     <ImageView
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:src="@drawable/logo_final"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo_final" />
 
     <TextView
-        android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="-10dp"
         android:text="Trick"
@@ -35,20 +35,20 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/drawable_et_bg_xml"
         android:gravity="center"
-        android:hint="شمارۀ همراه خود را وارد کنید"
+        android:hint="لطفا شماره همراه خود را وارد کنید"
         android:inputType="number"
         android:maxLength="11"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/round_button"
         android:text="تایید"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/TVmsg"
@@ -61,5 +61,14 @@
 
         />
 
+    <ProgressBar
+        android:id="@+id/pr_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="#654069"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
 
+        />
 </LinearLayout>
