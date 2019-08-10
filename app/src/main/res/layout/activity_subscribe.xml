@@ -57,10 +57,21 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
 
+
+
         />
 
 
+    <ProgressBar
+        android:id="@+id/pr_subscribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="#654069"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
 
+        />
 
 
 

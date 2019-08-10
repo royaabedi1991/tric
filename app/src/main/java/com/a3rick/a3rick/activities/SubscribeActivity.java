@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
     private ImageView logo;
     private Long ressult;
     private Boolean isSucssesful;
+    private ProgressBar progressBar;
 
     public SubscribeActivity() {
     }
@@ -63,6 +65,8 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
         subscribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar = findViewById(R.id.pr_subscribe);
+                progressBar.setVisibility(View.VISIBLE);
                 if (fromWhere.equals("RESULT")) {
                     subscribeUser(ServiceId, TransactionId, String.valueOf(etPin.getText()));
                 } else if (fromWhere.equals("MESSAGE")) {
