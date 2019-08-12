@@ -113,7 +113,7 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }else{
-            Toast.makeText(SplashActivity.this, "لطفا اتصال اینترنت خود را بررسی کرده و دوباره نلاش کنید", Toast.LENGTH_LONG).show();
+            Toast.makeText(SplashActivity.this, "لطفا اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید", Toast.LENGTH_LONG).show();
         }
     }
 

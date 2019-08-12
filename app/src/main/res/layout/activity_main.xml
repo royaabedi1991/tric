@@ -1,7 +1,7 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerlayout"
+    android:id="@+id/Linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
@@ -20,13 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorButumn">
 
-            <ProgressBar
-                android:id="@+id/toolbarProgress"
-                style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:visibility="gone"/>
+
 
             <TextView
                 android:id="@+id/tv_text_toolbar"
@@ -48,360 +42,6 @@
 
         </android.support.v4.view.ViewPager>
 
-        <!--<FrameLayout-->
-            <!--android:id="@+id/home_container"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginTop="55dp"-->
-            <!--android:layout_marginBottom="55dp">-->
-
-            <!--  <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:layout_marginBottom="55dp"
-                android:layoutDirection="ltr">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="210dp"
-
-                        >
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="5dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="برترین ها"
-                                android:textColor="#000"
-                                android:textSize="15dp"
-
-
-                                />
-
-                        </LinearLayout>
-
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_banner"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            android:layout_marginTop="30dp" />
-
-
-                    </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="8dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="محبوبترین ها"
-                                android:textColor="#000"
-                                android:textSize="15dp" />
-
-                        </LinearLayout>
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_Favorit"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:layout_marginTop="25dp" />
-                    </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="10dp">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="زیبایی"
-                                android:textColor="#000"
-                                android:textSize="15dp"
-
-                                />
-
-                        </LinearLayout>
-
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_beauty_category"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:layout_marginTop="35dp" />
-
-                    </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="10dp">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="خانه داری"
-                                android:textColor="#000"
-                                android:textSize="15dp" />
-
-                        </LinearLayout>
-
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_khanedari_category"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            android:layout_marginTop="35dp" />
-                    </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="7dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="آشپزی"
-                                android:textColor="#000"
-                                android:textSize="15dp" />
-
-                        </LinearLayout>
-
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_coock_category"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            android:layout_marginTop="35dp" />
-
-                    </android.support.v7.widget.CardView>
-
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="220dp"
-                        android:layout_marginTop="10dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingRight="15dp">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="-25dp"
-                                android:src="@drawable/ic_chevron_left_black_24dp" />
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
-                                android:gravity="right"
-                                android:text="مشاهده همه"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="15dp"
-
-
-                                />
-
-
-                            <TextView
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="120dp"
-                                android:gravity="right"
-                                android:text="سرگرمی"
-                                android:textColor="#000"
-                                android:textSize="15dp" />
-
-                        </LinearLayout>
-
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyceler_fun_category"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            android:layout_marginTop="35dp" />
-                    </android.support.v7.widget.CardView>
-
-                </LinearLayout>
-
-
-            </ScrollView>-->
-
-
-
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomn_nav"
             android:layout_width="match_parent"
@@ -417,17 +57,18 @@
     </RelativeLayout>
 
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"
-        app:theme="@style/NavigationDrawerStyle"
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:visibility="gone"-->
+        <!--android:id="@+id/navigation_view"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="start"-->
+        <!--app:headerLayout="@layout/navigation_header"-->
+        <!--app:menu="@menu/navigation_menu"-->
+        <!--app:theme="@style/NavigationDrawerStyle"-->
 
 
-        >
+        <!--&gt;-->
 
-    </android.support.design.widget.NavigationView>
-</android.support.v4.widget.DrawerLayout>
+    <!--</android.support.design.widget.NavigationView>-->
+</LinearLayout>

@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:background="#943DDBF4"
+        android:background="#D5B6F6FD"
         android:gravity="center"
         android:orientation="vertical">
 

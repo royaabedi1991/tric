@@ -14,4 +14,9 @@
         android:icon="@drawable/videocam"
         android:id="@+id/my_video"
         />
+
+    <item android:title="بیشتر"
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        android:id="@+id/more"
+        />
 </menu>
