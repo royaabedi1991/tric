@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.a3rick.a3rick"
-        minSdkVersion 24
+        minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -43,4 +43,8 @@ dependencies {
     implementation 'com.devbrackets.android:exomedia:4.2.3'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.hannesdorfmann.smoothprogressbar:library:1.0.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.github.adroitandroid:ChipCloud:2.2.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
 }

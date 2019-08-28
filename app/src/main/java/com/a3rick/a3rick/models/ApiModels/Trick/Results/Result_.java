@@ -1,4 +1,4 @@
-package com.a3rick.a3rick.models.ApiModels.Teepeto.Results;
+package com.a3rick.a3rick.models.ApiModels.Trick.Results;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

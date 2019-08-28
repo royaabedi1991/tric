@@ -15,48 +15,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         android:background="#D5B6F6FD"
-        android:gravity="center"
+        android:gravity="bottom"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/logo_final" />
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:text="Trick"
-            android:textColor="@color/colorText"
-            android:textSize="30dp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="50dp"
-            android:text="www.3rick.ir"
-            android:textColor="@color/colorText"
-            android:textSize="15dp" />
-
-        <ProgressBar
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="#654069"
-            android:indeterminateTintMode="src_atop"
+            android:layout_height="0dp"
+            android:layout_weight=".1"
+            android:gravity="bottom">
 
-            />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/logo_final" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".07"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="Trick"
+                android:textColor="@color/colorText"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".07"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="www.3rick.ir"
+                android:textColor="@color/colorText"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".04"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#654069"
+                android:indeterminateTintMode="src_atop"
+
+                />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

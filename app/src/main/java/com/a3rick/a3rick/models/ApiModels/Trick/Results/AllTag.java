@@ -1,9 +1,11 @@
-package com.a3rick.a3rick.models.ApiModels.Teepeto.Results;
+package com.a3rick.a3rick.models.ApiModels.Trick.Results;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AllTag {
+import java.io.Serializable;
+
+public class AllTag implements Serializable {
 
     @SerializedName("TagId")
     @Expose

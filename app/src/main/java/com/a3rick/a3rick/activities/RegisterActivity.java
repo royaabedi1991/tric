@@ -3,20 +3,15 @@ package com.a3rick.a3rick.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                initiatePopupWindow();
+               Intent intent = new Intent (RegisterActivity.this, DialogSharayetActivity.class);
+               startActivity(intent);
 
             }
         });
@@ -153,34 +149,34 @@ public class RegisterActivity extends AppCompatActivity {
     private PopupWindow pw;
 
 
-    private void initiatePopupWindow() {
-        RelativeLayout relativeLayout = findViewById(R.id.bac_dim_layout);
-        try {relativeLayout.setVisibility(View.VISIBLE);
-            //We need to get the instance of the LayoutInflater, use the context of this activity
-            LayoutInflater inflater = (LayoutInflater) RegisterActivity.this
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            //Inflate the view from a predefined XML layout
-            View layout = inflater.inflate(R.layout.popup_terms,
-                    (ViewGroup) findViewById(R.id.popup_element));
-            // create a 300px width and 470px height PopupWindow
-            pw = new PopupWindow(layout, 900, 1000, false);
-            // display the popup in the center
-            pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            pw.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            TextView cancelButton = layout.findViewById(R.id.end_data_send_button);
-            cancelButton.setOnClickListener(cancel_button_click_listener);
+//    private void initiatePopupWindow() {
+//        RelativeLayout relativeLayout = findViewById(R.id.bac_dim_layout);
+//        try {relativeLayout.setVisibility(View.VISIBLE);
+//            //We need to get the instance of the LayoutInflater, use the context of this activity
+//            LayoutInflater inflater = (LayoutInflater) RegisterActivity.this
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            //Inflate the view from a predefined XML layout
+//            View layout = inflater.inflate(R.layout.popup_terms,
+//                    (ViewGroup) findViewById(R.id.popup_element));
+//            // create a 300px width and 470px height PopupWindow
+//            pw = new PopupWindow(layout,500, 200, false);
+//            // display the popup in the center
+//            pw.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//            pw.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//            TextView cancelButton = layout.findViewById(R.id.end_data_send_button);
+//            cancelButton.setOnClickListener(cancel_button_click_listener);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
-        public void onClick(View v) {
-            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.bac_dim_layout);
-            relativeLayout.setVisibility(View.GONE);
-            pw.dismiss();
-        }
-    };
+//
+//    private View.OnClickListener cancel_button_click_listener = new View.OnClickListener() {
+//        public void onClick(View v) {
+//            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.bac_dim_layout);
+//            relativeLayout.setVisibility(View.GONE);
+//            pw.dismiss();
+//        }
+//    };
 }

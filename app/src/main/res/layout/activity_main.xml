@@ -20,16 +20,14 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorButumn">
 
-
-
             <TextView
                 android:id="@+id/tv_text_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="-20dp"
-
                 android:textColor="#000"
-                android:textSize="17dp" />
+                android:textSize="17dp"
+                android:gravity="center" />
+
         </android.support.v7.widget.Toolbar>
 
 
@@ -55,20 +53,4 @@
 
 
     </RelativeLayout>
-
-
-    <!--<android.support.design.widget.NavigationView-->
-        <!--android:visibility="gone"-->
-        <!--android:id="@+id/navigation_view"-->
-        <!--android:layout_width="300dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="start"-->
-        <!--app:headerLayout="@layout/navigation_header"-->
-        <!--app:menu="@menu/navigation_menu"-->
-        <!--app:theme="@style/NavigationDrawerStyle"-->
-
-
-        <!--&gt;-->
-
-    <!--</android.support.design.widget.NavigationView>-->
 </LinearLayout>

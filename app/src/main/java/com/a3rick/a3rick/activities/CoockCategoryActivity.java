@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.adapters.CoockCategoryAdapter;
-import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
+import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
 
 import java.util.ArrayList;
 import java.util.List;

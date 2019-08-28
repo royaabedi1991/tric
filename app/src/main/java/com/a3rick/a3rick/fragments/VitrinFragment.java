@@ -21,7 +21,7 @@ import com.a3rick.a3rick.adapters.CoockAdapter;
 import com.a3rick.a3rick.adapters.FavoriteAdapter;
 import com.a3rick.a3rick.adapters.FunAdapter;
 import com.a3rick.a3rick.adapters.HoseAdapter;
-import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
+import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
 import com.a3rick.a3rick.models.RecyclerViewModels.Banner;
 import com.a3rick.a3rick.models.RecyclerViewModels.Favorite;
 

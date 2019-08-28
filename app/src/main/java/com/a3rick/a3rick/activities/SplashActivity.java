@@ -45,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-                finish();
+//                finish();
 
             }
         }, 4000);
@@ -68,12 +68,22 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
 
+
+
+
+
+
+
+
                 } else if (apiResponse.getIsSuccessful() == true && apiResponse.getResult() == false) {
 
                     startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
                     finish();
 
                 }
+
+                else
+                    Toast.makeText(SplashActivity.this, "خطا", Toast.LENGTH_SHORT).show();
 
 
             }

@@ -13,12 +13,13 @@ import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
-import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Teepeto.Results.Result_;
-import com.a3rick.a3rick.webService.Teepeto.FileApi;
-import com.a3rick.a3rick.webService.Teepeto.RetrofitClient;
+import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
+import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.webService.Trick.FileApi;
+import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -62,6 +63,12 @@ public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdap
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
+                intent.putExtra("LIKECOUNT", current.getLikeCount());
+                intent.putExtra("ISLIKED", current.getIsLiked());
+                intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());
+                intent.putExtra("TAGS", (Serializable) current.getAllTags());
+                intent.putExtra("VIECOUNT", current.getViewCount());
+                intent.putExtra("CONTENTID", current.getContentId());
                 v.getContext().startActivity(intent);
             }
         });
@@ -89,7 +96,7 @@ public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdap
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/10, 1, 50, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/2, 1, 50, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {

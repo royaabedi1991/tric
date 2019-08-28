@@ -1,12 +1,12 @@
-package com.a3rick.a3rick.webService.Teepeto;
+package com.a3rick.a3rick.webService.Trick;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL ="http://79.175.138.89:8088/TeepeTo/";
+    private static final String BASE_URL ="http://79.175.138.89:8088/Trick/Api/";
 
-    public static String FILE_URL="http://79.175.138.77:7091/file/getfile?FileType=%s&fileid=%s";
+   // public static String FILE_URL="http://79.175.138.77:7091/file/getfile?FileType=%s&fileid=%s";
 
     public RetrofitClient() {
     }
