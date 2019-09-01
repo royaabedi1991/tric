@@ -1,7 +1,7 @@
 package com.a3rick.a3rick.webService.OTP;
 
-import com.a3rick.a3rick.models.ApiModels.OTP.ApiResult;
-import com.a3rick.a3rick.models.ApiModels.OTP.GetSubResult;
+import com.a3rick.a3rick.models.models.OTP.ApiResult;
+import com.a3rick.a3rick.models.models.OTP.GetSubResult;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

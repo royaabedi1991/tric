@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -70,6 +70,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
                 intent.putExtra("TAGS", (Serializable) current.getAllTags());
                 intent.putExtra("VIECOUNT", current.getViewCount());
                 intent.putExtra("CONTENTID", current.getContentId());
+                intent.putExtra("CATEGORYID", current.getContentId());
                 v.getContext().startActivity(intent);
             }
         });
@@ -97,7 +98,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(3, 1, 10, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(3, 1, 15, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {
@@ -130,6 +131,9 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
 
     }
+
+
+
 
 
 }

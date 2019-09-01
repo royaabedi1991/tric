@@ -16,34 +16,29 @@
         android:background="@color/colorButumn"
         android:layoutDirection="ltr">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_subject"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="right|center_vertical"
-                android:paddingRight="8dp">
-
-                <TextView
-                    android:id="@+id/tv_subject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="17dp" />
+        </RelativeLayout>
 
 
     </android.support.v7.widget.Toolbar>
 
+    <!--<com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
+    <!--android:id="@+id/video_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="250dp"/>-->
 
 
     <LinearLayout
@@ -84,7 +79,8 @@
                     android:id="@+id/share"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:background="@drawable/ic_share_black_24dp" />
+                    android:background="@drawable/ic_share_black_24dp"
+                    />
 
             </LinearLayout>
 
@@ -102,7 +98,7 @@
 
                 <TextView
                     android:id="@+id/tv_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="#000"
@@ -114,7 +110,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.25"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <Button
                     android:id="@+id/like"
@@ -170,7 +167,6 @@
             android:layout_height="0dp"
             android:layout_weight="0.002"
             android:gravity="center">
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -180,49 +176,46 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linear_body"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.55"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:gravity="center">
 
             <LinearLayout
-
+                android:id="@+id/linear_body"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".1"
+                android:layout_weight=".07"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:gravity="bottom">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/tvSubject"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:fontFamily=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
-                android:gravity="top"
+                android:layout_weight=".4"
                 android:orientation="vertical"
-                android:padding="10dp">
-
+                android:gravity="top"
+                android:padding="10dp"
+                >
                 <TextView
                     android:id="@+id/tvBody"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:justificationMode="inter_word"
                     android:textColor="#000"
-                    android:textSize="15dp" />
-            </ScrollView>
-
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
 
 
 
@@ -231,8 +224,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".2"
-                android:gravity="top"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="top">
 
                 <com.adroitandroid.chipcloud.ChipCloud xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/chip_cloud"
@@ -250,23 +243,41 @@
             </LinearLayout>
 
 
+
+
+
+
         </LinearLayout>
-
-
-        <!--<LinearLayout-->
-
-        <!---->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="horizontal"-->
-
-        <!--&gt;-->
 
 
     </LinearLayout>
 
 
+    <!--<LinearLayout-->
+
+    <!---->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+
+    <!--&gt;-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </LinearLayout>
+
+
+
 
 

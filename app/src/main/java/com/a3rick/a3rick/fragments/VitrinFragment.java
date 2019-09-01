@@ -15,15 +15,11 @@ import com.a3rick.a3rick.activities.BeautyCategoryActivity;
 import com.a3rick.a3rick.activities.CoockCategoryActivity;
 import com.a3rick.a3rick.activities.FunCategoryActivity;
 import com.a3rick.a3rick.activities.HouseCategoryActivity;
-import com.a3rick.a3rick.adapters.BannerAdapter;
 import com.a3rick.a3rick.adapters.BeautyAdapter;
 import com.a3rick.a3rick.adapters.CoockAdapter;
-import com.a3rick.a3rick.adapters.FavoriteAdapter;
 import com.a3rick.a3rick.adapters.FunAdapter;
 import com.a3rick.a3rick.adapters.HoseAdapter;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
-import com.a3rick.a3rick.models.RecyclerViewModels.Banner;
-import com.a3rick.a3rick.models.RecyclerViewModels.Favorite;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,23 +73,6 @@ public class VitrinFragment extends Fragment {
             }
         });
 
-// Set the adapter
-
-//BannerRecycler
-        RecyclerView bannerRecycler = (RecyclerView) view.findViewById(R.id.recyceler_banner);
-        LinearLayoutManager bannerManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
-        bannerRecycler.setLayoutManager(bannerManager);
-        BannerAdapter bannerAdapter = new BannerAdapter(getContext(), getBanners());
-        bannerRecycler.setAdapter(bannerAdapter);
-
-
-//FavoriteRecycler
-        RecyclerView favoriteRecyceler = (RecyclerView) view.findViewById(R.id.recyceler_Favorit);
-        FavoriteAdapter favoriteAdapter = new FavoriteAdapter(getContext(), getFavorites());
-        favoriteRecyceler.setAdapter(favoriteAdapter);
-        LinearLayoutManager favoriteManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
-        favoriteRecyceler.setLayoutManager(favoriteManager);
-
 
 //BeautyRecycler
         RecyclerView beautyRecycler = (RecyclerView) view.findViewById(R.id.recyceler_beauty_category);
@@ -146,48 +125,6 @@ public class VitrinFragment extends Fragment {
 
 
     }
-
-
-    private List<Banner> getBanners() {
-
-        List<Banner> banners = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-
-            Banner current = new Banner();
-            current.setRecource(R.drawable.banner);
-            current.setTitle("طرز تهیه سبزی پلو");
-            banners.add(current);
-
-
-        }
-        return banners;
-    }
-
-    private List<Favorite> getFavorites() {
-        List<Favorite> favorites = new ArrayList<>();
-        int[] drawables = {
-                R.drawable.pic_1,
-                R.drawable.pic_2,
-                R.drawable.pic_3,
-                R.drawable.pic_1,
-                R.drawable.pic_2,
-
-
-        };
-
-        for (int i = 0; i < 5; i++) {
-
-            Favorite current = new Favorite();
-            current.setRecource(drawables[i]);
-            favorites.add(current);
-
-
-        }
-        return favorites;
-
-    }
-
 
 
 }

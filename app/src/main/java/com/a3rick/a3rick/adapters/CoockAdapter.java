@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -96,7 +96,7 @@ public class CoockAdapter extends RecyclerView.Adapter<CoockAdapter.Holder> {
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/1, 1, 10, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/1, 1, 15, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {

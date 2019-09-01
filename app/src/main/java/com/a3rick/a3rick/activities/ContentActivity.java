@@ -17,14 +17,18 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.AllTag;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetLikeStateResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.AllTag;
+import com.a3rick.a3rick.models.models.Trick.favorites.GetViewCountResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_contentId.GetContentWithIdResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.DeleteFavoriteContentResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.GetLikeDisLikeResult;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.adroitandroid.chipcloud.ChipCloud;
@@ -39,7 +43,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class ContentActivity extends AppCompatActivity implements OnPreparedListener, View.OnClickListener {
+public class ContentActivity extends AppCompatActivity implements OnPreparedListener {
     TextView tvSubject;
     TextView tvSubject1;
     TextView tvBody;
@@ -62,9 +66,14 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     private LinearLayout holder;
     boolean firstPlay = true;
     private int orientation;
-    ImageButton back_press;
     Button like;
     Button dislike;
+    Button addFavorite;
+    Button deleteFavorite;
+    private int totalLike;
+    private int totalView;
+    private int favoriteId;
+
 
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -79,7 +88,9 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         init();
-        getLikeState();
+        getContentWithId();
+        getViewCount();
+
 
     }
 
@@ -91,9 +102,39 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         tvLikeCount = findViewById(R.id.tv_like);
         tvViewCount = findViewById(R.id.tv_view);
         tvTag = findViewById(R.id.chip_cloud);
+        addFavorite = findViewById(R.id.add_favorite);
+        addFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addContentToFavorite();
+            }
+        });
+        deleteFavorite = findViewById(R.id.delete_favorite);
+        deleteFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteContentToFavorite();
+            }
+        });
+
         like = findViewById(R.id.like);
         dislike = findViewById(R.id.dislike);
-        like.setOnClickListener(this);
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getLikeDislike();
+
+
+            }
+        });
+        dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLikeDislike();
+
+            }
+        });
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -117,7 +158,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         isBookmarked = intent.getBooleanExtra("ISBOOKMARKED", true);
         isLiked = intent.getBooleanExtra("ISLIKED", true);
         viewCount = intent.getIntExtra("VIECOUNT", 1);
-        likeCount = intent.getIntExtra("LIKECOUNT", 1);
+        likeCount = intent.getIntExtra("LIKECOUNT", 20);
         tags = (List<AllTag>) intent.getSerializableExtra("TAGS");
         contentId = intent.getIntExtra("CONTENTID", 1);
         setupVideoView();
@@ -177,8 +218,8 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         tvSubject.setText(subject);
         tvSubject1.setText(subject);
         tvBody.setText(body);
-        tvViewCount.setText(String.valueOf(viewCount));
-        tvLikeCount.setText(String.valueOf(likeCount));
+//        tvViewCount.setText(String.valueOf(viewCount));
+//        tvLikeCount.setText(String.valueOf(likeCount));
         tvTag.addChips(increaseArray(tags));
         videoView.setOnPreparedListener(this);
         videoView.getVideoControls().hide();
@@ -254,38 +295,194 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        finish();
 
     }
 
-    private void getLikeState() {
+    private void getLikeDislike() {
 
         FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-        Call<GetLikeStateResult> call = fileApi.getLikeState("{{Token}}",contentId);
-        call.enqueue(new Callback<GetLikeStateResult>() {
+        Call<GetLikeDisLikeResult> call = fileApi.getLikeDisLike(contentId);
+        call.enqueue(new Callback<GetLikeDisLikeResult>() {
             @Override
-            public void onResponse(Call<GetLikeStateResult> call, Response<GetLikeStateResult> response) {
-                GetLikeStateResult apiResponse = new GetLikeStateResult();
+            public void onResponse(Call<GetLikeDisLikeResult> call, Response<GetLikeDisLikeResult> response) {
+                GetLikeDisLikeResult apiResponse = new GetLikeDisLikeResult();
                 apiResponse = response.body();
+                totalLike = apiResponse.getResult().getTotalLike();
 
+
+                if (apiResponse.getResult().getIsLiked() == true) {
+                    tvLikeCount.setText(String.valueOf(totalLike));
+                    like.setVisibility(View.GONE);
+                    dislike.setVisibility(View.VISIBLE);
+                } else if (apiResponse.getResult().getIsLiked() == false & like.isCursorVisible()) {
+                    tvLikeCount.setText(String.valueOf(totalLike));
+                    like.setVisibility(View.VISIBLE);
+                    dislike.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetLikeDisLikeResult> call, Throwable t) {
+                Log.e("Tag", "error");
+                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
+
+//    private void getLikeState() {
+//
+//        FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
+//        Call<GetLikeStateResult> call = fileApi.getLikeState(contentId);
+//        call.enqueue(new Callback<GetLikeStateResult>() {
+//            @Override
+//            public void onResponse(Call<GetLikeStateResult> call, Response<GetLikeStateResult> response) {
+//                GetLikeStateResult apiResponse = new GetLikeStateResult();
+//                apiResponse = response.body();
+//                if (apiResponse.getResult() == true) {
+//
+//
+//                } else if (apiResponse.getResult() == false) {
+//                    like.setVisibility(View.VISIBLE);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GetLikeStateResult> call, Throwable t) {
+//                Log.e("Tag", "error");
+//
+//            }
+//        });
+//
+//
+//    }
+
+
+    private void getViewCount() {
+
+        FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
+        Call<GetViewCountResult> call = fileApi.getViewCount(contentId);
+        call.enqueue(new Callback<GetViewCountResult>() {
+            @Override
+            public void onResponse(Call<GetViewCountResult> call, Response<GetViewCountResult> response) {
+                GetViewCountResult apiResponse = new GetViewCountResult();
+                apiResponse = response.body();
+                totalView = apiResponse.getResult();
+                tvViewCount.setText(String.valueOf(totalView));
 
             }
 
             @Override
-            public void onFailure(Call<GetLikeStateResult> call, Throwable t) {
+            public void onFailure(Call<GetViewCountResult> call, Throwable t) {
                 Log.e("Tag", "error");
 
             }
         });
 
 
+    }
+
+
+    private void getContentWithId() {
+
+        FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
+        Call<GetContentWithIdResult> call = fileApi.getContentWithId(contentId);
+        call.enqueue(new Callback<GetContentWithIdResult>() {
+            @Override
+            public void onResponse(Call<GetContentWithIdResult> call, Response<GetContentWithIdResult> response) {
+                GetContentWithIdResult apiResponse = new GetContentWithIdResult();
+                apiResponse = response.body();
+                favoriteId= apiResponse.getResult().getFavoriteId();
+                int likeCount = apiResponse.getResult().getLikeCount();
+                tvLikeCount.setText(String.valueOf(likeCount));
+                if (apiResponse.getResult().getIsLiked() == true) {
+                    like.setVisibility(View.GONE);
+                    dislike.setVisibility(View.VISIBLE);
+                } else if (apiResponse.getResult().getIsLiked() == true) {
+                    like.setVisibility(View.VISIBLE);
+                    dislike.setVisibility(View.GONE);
+                }
+                if (apiResponse.getResult().getIsBookmarked() == true){
+                    addFavorite.setVisibility(View.GONE);
+                    deleteFavorite.setVisibility(View.VISIBLE);
+                } else if (apiResponse.getResult().getIsBookmarked() == false){
+                    addFavorite.setVisibility(View.VISIBLE);
+                    deleteFavorite.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetContentWithIdResult> call, Throwable t) {
+                Log.e("Tag", "error");
+                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
+
+    private void addContentToFavorite() {
+
+        FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
+        Call<AddFavoriteContentResult> call = fileApi.addFavorite(contentId);
+        call.enqueue(new Callback<AddFavoriteContentResult>() {
+            @Override
+            public void onResponse(Call<AddFavoriteContentResult> call, Response<AddFavoriteContentResult> response) {
+                AddFavoriteContentResult apiResponse = new AddFavoriteContentResult();
+                apiResponse = response.body();
+
+
+                    addFavorite.setVisibility(View.GONE);
+                    deleteFavorite.setVisibility(View.VISIBLE);
+                    Toast.makeText(ContentActivity.this, "به لیست علاقه مندی ها افزوده شد", Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<AddFavoriteContentResult> call, Throwable t) {
+                Log.e("Tag", "error");
+                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
 
 
-    @Override
-    public void onClick(View v) {
-        getLikeState();
+    private void deleteContentToFavorite() {
+
+        FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
+        Call<DeleteFavoriteContentResult> call = fileApi.deleteFavorite(favoriteId);
+        call.enqueue(new Callback<DeleteFavoriteContentResult>() {
+            @Override
+            public void onResponse(Call<DeleteFavoriteContentResult> call, Response<DeleteFavoriteContentResult> response) {
+                DeleteFavoriteContentResult apiResponse = new DeleteFavoriteContentResult();
+                apiResponse = response.body();
+
+                    addFavorite.setVisibility(View.VISIBLE);
+                    deleteFavorite.setVisibility(View.GONE);
+                    Toast.makeText(ContentActivity.this, "از لیست علاقه مندی ها حذف شد", Toast.LENGTH_SHORT).show();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteFavoriteContentResult> call, Throwable t) {
+                Log.e("Tag", "error");
+                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
 
 

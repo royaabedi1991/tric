@@ -8,9 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.adapters.CategoryAdapter;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.categories.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,26 +26,26 @@ public class CategoryFragment extends Fragment {
         RecyclerView categoryRecyceler = (RecyclerView) view.findViewById(R.id.category_recycler);
         LinearLayoutManager categoryManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         categoryRecyceler.setLayoutManager(categoryManager);
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), getResults());
+        CategoryAdapter categoryAdapter = new CategoryAdapter(getContext(), getAllResults());
         categoryRecyceler.setAdapter(categoryAdapter);
 
 
         return view;
     }
 
-private List<Result_> getResults() {
-    List<Result_> result_s = new ArrayList<>();
+private List<Result> getAllResults() {
+    List<Result> results = new ArrayList<>();
 
     for (int i = 0; i < 3; i++) {
 
-        Result_ current = new Result_();
+        Result current = new Result();
 
-        result_s.add(current);
+        results.add(current);
 
 
 
     }
-    return result_s;
+    return results;
 
 
 }

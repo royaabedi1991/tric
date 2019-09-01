@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.ApiModels.OTP.GetSubResult;
+import com.a3rick.a3rick.models.models.OTP.GetSubResult;
 import com.a3rick.a3rick.webService.OTP.APIClient;
 import com.a3rick.a3rick.webService.OTP.APIInterface;
 

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.ApiModels.OTP.ApiResult;
+import com.a3rick.a3rick.models.models.OTP.ApiResult;
 import com.a3rick.a3rick.webService.OTP.APIClient;
 import com.a3rick.a3rick.webService.OTP.APIInterface;
 

@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.AllTag;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.AllTag;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -42,7 +42,7 @@ public class CoockCategoryAdapter extends RecyclerView.Adapter<CoockCategoryAdap
     @NonNull
     @Override
     public CoockCategoryAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Holder holder = new Holder(inflater.inflate(R.layout.row_coock_category, parent, false));
+        Holder holder = new Holder(inflater.inflate(R.layout.row_categorys, parent, false));
 
         holder.getContents();
         return holder;
@@ -90,14 +90,14 @@ public class CoockCategoryAdapter extends RecyclerView.Adapter<CoockCategoryAdap
 
         public Holder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.card_category_coock);
-            textView = itemView.findViewById(R.id.tv_category_coock);
+            imageView = itemView.findViewById(R.id.tv_headerImage_category);
+            textView = itemView.findViewById(R.id.tv_subject_category);
         }
 
 
         private void getContents() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/1, 1, 10, "LastItem");
+            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/1, 1, 50, "LastItem");
             call.enqueue(new Callback<GetContentResult>() {
                 @Override
                 public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {

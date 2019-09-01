@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -40,7 +40,7 @@ public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdap
     @NonNull
     @Override
     public HouseCategoryAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Holder holder = new Holder(inflater.inflate(R.layout.row_house_category, parent, false));
+        Holder holder = new Holder(inflater.inflate(R.layout.row_categorys, parent, false));
 
         holder.getContents();
         return holder;
@@ -89,8 +89,8 @@ public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdap
 
         public Holder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.card_category_house);
-            textView = itemView.findViewById(R.id.tv_category_house);
+            imageView = itemView.findViewById(R.id.tv_headerImage_category);
+            textView = itemView.findViewById(R.id.tv_subject_category);
         }
 
 

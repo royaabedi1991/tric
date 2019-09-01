@@ -16,11 +16,10 @@ import com.a3rick.a3rick.activities.BeautyCategoryActivity;
 import com.a3rick.a3rick.activities.CoockCategoryActivity;
 import com.a3rick.a3rick.activities.FunCategoryActivity;
 import com.a3rick.a3rick.activities.HouseCategoryActivity;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.GetContentResult;
-import com.a3rick.a3rick.models.ApiModels.Trick.Results.Result_;
+import com.a3rick.a3rick.models.models.Trick.categories.GetAllCategoryResult;
+import com.a3rick.a3rick.models.models.Trick.categories.Result;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -30,11 +29,11 @@ import retrofit2.Response;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder> {
     private LayoutInflater inflater;
-    List<Result_> result_s;
+    List<Result> results;
 
 
-    public CategoryAdapter(Context context, List<Result_> result_s) {
-        this.result_s = result_s;
+    public CategoryAdapter(Context context, List<Result> results) {
+        this.results = results;
         inflater = LayoutInflater.from(context);
     }
 
@@ -44,7 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     public CategoryAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Holder holder = new Holder(inflater.inflate(R.layout.row_category_frag, parent, false));
 
-        holder.getContents();
+        holder.getAllCategory();
         return holder;
     }
 
@@ -57,12 +56,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             public void onClick(View v) {
 
 
-                Result_ current = result_s.get(position);
+              Result current = results.get(position);
 
                 switch (position){
 
                     case 0:
-                        Intent intent0 = new Intent(v.getContext(), BeautyCategoryActivity.class);
+                        Intent intent0 = new Intent(v.getContext(), CoockCategoryActivity.class);
                         v.getContext().startActivity(intent0);
                         break;
 
@@ -72,7 +71,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
                         break;
 
                     case 2:
-                        Intent intent2 = new Intent(v.getContext(), CoockCategoryActivity.class);
+                        Intent intent2 = new Intent(v.getContext(), BeautyCategoryActivity.class);
                         v.getContext().startActivity(intent2);
                         break;
 
@@ -93,11 +92,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
 
 
-//                intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
-//                intent.putExtra("SUBJECT", current.getSubject());
-//                intent.putExtra("BODY", current.getBody());
-//                intent.putExtra("HEADERIMAGE", current.getHeaderImageFileAddress());
-
 
             }
         });
@@ -107,7 +101,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
     @Override
     public int getItemCount() {
-        return result_s.size();
+        return results.size();
     }
 
 
@@ -123,23 +117,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
         }
 
 
-        private void getContents() {
+        private void getAllCategory() {
             FileApi fileApi = RetrofitClient.getRetroClient().create(FileApi.class);
-            Call<GetContentResult> call = fileApi.getContent(/*"{{Token}}",*/1, 1, 4, "LastItem");
-            call.enqueue(new Callback<GetContentResult>() {
+            Call<GetAllCategoryResult> call = fileApi.getAllCategory(0);
+            call.enqueue(new Callback<GetAllCategoryResult>() {
                 @Override
-                public void onResponse(Call<GetContentResult> call, Response<GetContentResult> response) {
-                    GetContentResult apiResponse = new GetContentResult();
+                public void onResponse(Call<GetAllCategoryResult> call, Response<GetAllCategoryResult> response) {
+                    GetAllCategoryResult apiResponse = new GetAllCategoryResult();
                     apiResponse = response.body();
-                    if (result_s != null) {
-                        result_s = apiResponse.getResult();
+                    if (results != null) {
+                        results = apiResponse.getResult();
                         notifyDataSetChanged();
                     }
 
                 }
 
                 @Override
-                public void onFailure(Call<GetContentResult> call, Throwable t) {
+                public void onFailure(Call<GetAllCategoryResult> call, Throwable t) {
                     Log.e("Tag", "error");
 
                 }
@@ -149,9 +143,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
         }
 
         public void setData(int position) {
-            Result_ current = result_s.get(position);
-            Picasso.with(itemView.getContext()).load(current.getHeaderImageFileAddress()).centerCrop().fit().into(imageView);
-            textView.setText(current.getSubject());
+            Result current = results.get(position);
+//            Picasso.with(itemView.getContext()).load(current.getBannerImageFileAddress()).centerCrop().fit().into(imageView);
+            textView.setText(current.getName());
 
 
         }
