@@ -16,8 +16,8 @@ public class GetContentResult {
     private Object message;
     @SerializedName("Result")
     @Expose
+    private List<Result> result = null;
 
-    private List<Result_> result = null;
     public Boolean getIsSuccessful() {
         return isSuccessful;
     }
@@ -34,12 +34,11 @@ public class GetContentResult {
         this.message = message;
     }
 
-    public List<Result_> getResult() {
+    public List<Result> getResult() {
         return result;
     }
 
-    public void setResult(List<Result_> result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
-
 }

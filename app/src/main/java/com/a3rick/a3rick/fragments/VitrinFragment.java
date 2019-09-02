@@ -19,7 +19,7 @@ import com.a3rick.a3rick.adapters.BeautyAdapter;
 import com.a3rick.a3rick.adapters.CoockAdapter;
 import com.a3rick.a3rick.adapters.FunAdapter;
 import com.a3rick.a3rick.adapters.HoseAdapter;
-import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,12 +111,12 @@ public class VitrinFragment extends Fragment {
         return view;
     }
 
-    private List<Result_> getResults() {
-        List<Result_> result_s = new ArrayList<>();
+    private List<Result> getResults() {
+        List<Result> result_s = new ArrayList<>();
 
         for (int i = 0; i < 22; i++) {
 
-            Result_ current = new Result_();
+            Result current = new Result();
 
             result_s.add(current);
 

@@ -45,7 +45,6 @@
     </android.support.v7.widget.Toolbar>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -192,10 +191,10 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".1"
+                android:layout_weight=".2"
+                android:gravity="bottom"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:gravity="bottom">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/tvSubject"
@@ -203,13 +202,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily=""
                     android:textColor="#000"
-                    android:textSize="16dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".5"
                 android:gravity="top"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -217,14 +216,11 @@
                 <TextView
                     android:id="@+id/tvBody"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
                     android:textColor="#000"
-                    android:textSize="15dp" />
-            </ScrollView>
-
-
-
+                    android:textSize="14dp" />
+            </LinearLayout>
 
 
             <LinearLayout
@@ -232,14 +228,14 @@
                 android:layout_height="0dp"
                 android:layout_weight=".2"
                 android:gravity="top"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp">
 
                 <com.adroitandroid.chipcloud.ChipCloud xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/chip_cloud"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
                     chipcloud:deselectTransitionMS="500"
                     chipcloud:deselectedColor="#AE49A5B6"
                     chipcloud:gravity="right"

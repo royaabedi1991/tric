@@ -295,6 +295,19 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+//        Intent intent0 = new Intent(ContentActivity.this, CoockCategoryActivity.class);
+//        startActivity(intent0);
+//
+//        Intent intent1 = new Intent(ContentActivity.this, HouseCategoryActivity.class);
+//        startActivity(intent1);
+//
+//        Intent intent2 = new Intent(ContentActivity.this, BeautyCategoryActivity.class);
+//        startActivity(intent2);
+//
+//        Intent intent3 = new Intent(ContentActivity.this, FunCategoryActivity.class);
+//        startActivity(intent3);
+
         finish();
 
     }
@@ -370,9 +383,11 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         call.enqueue(new Callback<GetViewCountResult>() {
             @Override
             public void onResponse(Call<GetViewCountResult> call, Response<GetViewCountResult> response) {
+
                 GetViewCountResult apiResponse = new GetViewCountResult();
                 apiResponse = response.body();
                 totalView = apiResponse.getResult();
+
                 tvViewCount.setText(String.valueOf(totalView));
 
             }
@@ -395,10 +410,25 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         call.enqueue(new Callback<GetContentWithIdResult>() {
             @Override
             public void onResponse(Call<GetContentWithIdResult> call, Response<GetContentWithIdResult> response) {
+//                Intent intent1 = new Intent(ContentActivity.this,BeautyCategoryActivity.class );
+//                Intent intent2 = new Intent(ContentActivity.this,ContentActivity.class );
+//                Intent intent3 = new Intent(ContentActivity.this,FunCategoryActivity.class );
+//                Intent intent4 = new Intent(ContentActivity.this,HouseCategoryActivity.class );
                 GetContentWithIdResult apiResponse = new GetContentWithIdResult();
                 apiResponse = response.body();
-                favoriteId= apiResponse.getResult().getFavoriteId();
+                favoriteId = apiResponse.getResult().getFavoriteId();
+
                 int likeCount = apiResponse.getResult().getLikeCount();
+//                intent1.putExtra("LIKECOUNT",likeCount);
+//                intent1.putExtra("TOTALVIEW",totalView);
+//                intent2.putExtra("LIKECOUNT",likeCount);
+//                intent2.putExtra("TOTALVIEW",totalView);
+//                intent3.putExtra("LIKECOUNT",likeCount);
+//                intent3.putExtra("TOTALVIEW",totalView);
+//                intent4.putExtra("LIKECOUNT",likeCount);
+//                intent4.putExtra("TOTALVIEW",totalView);
+
+
                 tvLikeCount.setText(String.valueOf(likeCount));
                 if (apiResponse.getResult().getIsLiked() == true) {
                     like.setVisibility(View.GONE);
@@ -407,10 +437,10 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                     like.setVisibility(View.VISIBLE);
                     dislike.setVisibility(View.GONE);
                 }
-                if (apiResponse.getResult().getIsBookmarked() == true){
+                if (apiResponse.getResult().getIsBookmarked() == true) {
                     addFavorite.setVisibility(View.GONE);
                     deleteFavorite.setVisibility(View.VISIBLE);
-                } else if (apiResponse.getResult().getIsBookmarked() == false){
+                } else if (apiResponse.getResult().getIsBookmarked() == false) {
                     addFavorite.setVisibility(View.VISIBLE);
                     deleteFavorite.setVisibility(View.GONE);
                 }
@@ -438,9 +468,9 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 apiResponse = response.body();
 
 
-                    addFavorite.setVisibility(View.GONE);
-                    deleteFavorite.setVisibility(View.VISIBLE);
-                    Toast.makeText(ContentActivity.this, "به لیست علاقه مندی ها افزوده شد", Toast.LENGTH_SHORT).show();
+                addFavorite.setVisibility(View.GONE);
+                deleteFavorite.setVisibility(View.VISIBLE);
+                Toast.makeText(ContentActivity.this, "به لیست علاقه مندی ها افزوده شد", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -466,10 +496,9 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 DeleteFavoriteContentResult apiResponse = new DeleteFavoriteContentResult();
                 apiResponse = response.body();
 
-                    addFavorite.setVisibility(View.VISIBLE);
-                    deleteFavorite.setVisibility(View.GONE);
-                    Toast.makeText(ContentActivity.this, "از لیست علاقه مندی ها حذف شد", Toast.LENGTH_SHORT).show();
-
+                addFavorite.setVisibility(View.VISIBLE);
+                deleteFavorite.setVisibility(View.GONE);
+                Toast.makeText(ContentActivity.this, "از لیست علاقه مندی ها حذف شد", Toast.LENGTH_SHORT).show();
 
 
             }

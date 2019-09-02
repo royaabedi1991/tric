@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.activities.ContentActivity;
 import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
-import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result_;
+import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.Result;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.squareup.picasso.Picasso;
@@ -28,11 +28,11 @@ import retrofit2.Response;
 
 public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
     private LayoutInflater inflater;
-    List<Result_> result_s;
+    List<Result> result_s;
 
 
 
-    public BeautyAdapter(Context context, List<Result_> result_s) {
+    public BeautyAdapter(Context context, List<Result> result_s) {
         this.result_s = result_s;
         inflater = LayoutInflater.from(context);
     }
@@ -56,7 +56,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
             public void onClick(View v) {
 
 
-                Result_ current = result_s.get(position);
+                Result current = result_s.get(position);
                 Intent intent = new Intent(v.getContext(), ContentActivity.class);
 
 
@@ -122,7 +122,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
         }
 
         public void setData(int position) {
-            Result_ current = result_s.get(position);
+            Result current = result_s.get(position);
             Picasso.with(itemView.getContext()).load(current.getHeaderImageFileAddress()).centerCrop().fit().into(imageView);
             textView.setText(current.getSubject());
 
