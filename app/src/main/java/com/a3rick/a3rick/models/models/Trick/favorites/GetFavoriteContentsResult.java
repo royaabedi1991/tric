@@ -1,20 +1,21 @@
-
 package com.a3rick.a3rick.models.models.Trick.favorites;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetLikeStateResult {
+import java.util.List;
+
+public class GetFavoriteContentsResult {
 
     @SerializedName("IsSuccessful")
     @Expose
     private Boolean isSuccessful;
     @SerializedName("Message")
     @Expose
-    private String message;
+    private Object message;
     @SerializedName("Result")
     @Expose
-    private Boolean result;
+    private List<Result> result = null;
 
     public Boolean getIsSuccessful() {
         return isSuccessful;
@@ -24,19 +25,19 @@ public class GetLikeStateResult {
         this.isSuccessful = isSuccessful;
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
 
-    public Boolean getResult() {
+    public List<Result> getResult() {
         return result;
     }
 
-    public void setResult(Boolean result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
 

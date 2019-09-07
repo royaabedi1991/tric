@@ -1,13 +1,15 @@
 package com.a3rick.a3rick.webService.Trick;
 
-import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.categories.GetAllCategoryResult;
 import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.GetContentResult;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetLikeStateResult;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetViewCountResult;
 import com.a3rick.a3rick.models.models.Trick.content_with_contentId.GetContentWithIdResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.favorites.DeleteFavoriteContentResult;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetLikeDisLikeResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.GetFavoriteContentsResult;
+import com.a3rick.a3rick.models.models.Trick.like_view.GetLikeDisLikeResult;
+import com.a3rick.a3rick.models.models.Trick.like_view.GetLikeStateResult;
+import com.a3rick.a3rick.models.models.Trick.like_view.GetViewCountResult;
+import com.a3rick.a3rick.models.models.Trick.tags.GetAllTagsResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -63,5 +65,16 @@ public interface FileApi {
     @GET("Favorits/Delete?favoriteId")
     Call<DeleteFavoriteContentResult> deleteFavorite(
             @Query("favoriteId") int favoriteId);
+
+    @Headers("Token:0de0a7b0-5a86-447e-857b-17446c097de2")
+    @GET("Favorits/GetFavoriteContents")
+    Call<GetFavoriteContentsResult> GetFavorite(
+            @Query("PageNumber") int PageNumber,
+            @Query("RowCount") int RowCount);
+
+
+    @Headers("Token:0de0a7b0-5a86-447e-857b-17446c097de2")
+    @GET("Tag/GetAllTag")
+    Call<GetAllTagsResult> getAllTags();
 
 }

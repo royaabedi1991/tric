@@ -239,7 +239,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     chipcloud:deselectTransitionMS="500"
-                    chipcloud:deselectedColor="#AE49A5B6"
+                    chipcloud:deselectedColor="@color/colorButumn"
                     chipcloud:gravity="right"
                     chipcloud:selectMode="none"
 

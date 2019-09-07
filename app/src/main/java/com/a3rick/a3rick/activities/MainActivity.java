@@ -2,6 +2,7 @@ package com.a3rick.a3rick.activities;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,8 +11,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     String mobileNumner;
     TextView textView;
     TextView tvToolbar;
+    ImageView searchBox;
 
     public void setToolbar(Toolbar toolbar) {
         this.toolbar = toolbar;
@@ -47,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         init();
 
 
-
-
     }
 
 
@@ -57,9 +59,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void init() {
-
 //GetMobileNumber from SharedPreferences
         mobileNumner = getSharedPreferences("MyPref", 0).getString("PHONENUMBER", "");
+
+
+        searchBox = findViewById(R.id.search_box);
+        searchBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+               startActivity(intent);
+            }
+        });
 
 
 //ViewPager
@@ -89,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         actionBar.setHomeButtonEnabled(true);
 // to delete toolbar back buttom
         actionBar.setDisplayHomeAsUpEnabled(false);
-
 
 
     }
@@ -160,8 +170,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     }
-
-
 
 
     @Override

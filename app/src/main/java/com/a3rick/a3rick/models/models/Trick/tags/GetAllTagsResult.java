@@ -1,20 +1,21 @@
-
-package com.a3rick.a3rick.models.models.Trick.favorites;
+package com.a3rick.a3rick.models.models.Trick.tags;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetViewCountResult {
+import java.util.List;
+
+public class GetAllTagsResult {
 
     @SerializedName("IsSuccessful")
     @Expose
     private Boolean isSuccessful;
     @SerializedName("Message")
     @Expose
-    private String message;
+    private Object message;
     @SerializedName("Result")
     @Expose
-    private Integer result;
+    private List<Result> result = null;
 
     public Boolean getIsSuccessful() {
         return isSuccessful;
@@ -24,19 +25,19 @@ public class GetViewCountResult {
         this.isSuccessful = isSuccessful;
     }
 
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
 
-    public Integer getResult() {
+    public List<Result> getResult() {
         return result;
     }
 
-    public void setResult(Integer result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
 

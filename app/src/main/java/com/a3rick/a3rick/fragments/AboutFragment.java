@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 import com.a3rick.a3rick.R;
 
-public class MoreFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
         return view;
     }
 }

@@ -6,42 +6,74 @@
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".15"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/logo_final" />
+        </LinearLayout>
 
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/logo_final" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
-            android:text="Trick"
-            android:textColor="@color/colorText"
-            android:textSize="25dp" />
-
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".03"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Trick"
+                android:textColor="@color/colorText"
+                android:textSize="25dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.001"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/customborder" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:textDirection="rtl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="@string/textAbout"
                 android:textColor="#000"
-                android:textSize="17dp"
-                android:layout_marginTop="20dp"
+                android:textSize="15dp"
 
                 />
         </ScrollView>

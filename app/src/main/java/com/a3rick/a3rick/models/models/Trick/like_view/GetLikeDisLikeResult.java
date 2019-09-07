@@ -1,5 +1,5 @@
 
-package com.a3rick.a3rick.models.models.Trick.favorites;
+package com.a3rick.a3rick.models.models.Trick.like_view;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

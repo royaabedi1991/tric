@@ -18,12 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.SearchActivity"></activity>
         <activity
             android:name=".activities.DialogSharayetActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar">
-
-
-        </activity>
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"></activity>
         <activity android:name=".activities.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +44,7 @@
         <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

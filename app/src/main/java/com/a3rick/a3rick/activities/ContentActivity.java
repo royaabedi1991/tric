@@ -28,8 +28,8 @@ import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.AllTag;
 import com.a3rick.a3rick.models.models.Trick.content_with_contentId.GetContentWithIdResult;
 import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.favorites.DeleteFavoriteContentResult;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetLikeDisLikeResult;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetViewCountResult;
+import com.a3rick.a3rick.models.models.Trick.like_view.GetLikeDisLikeResult;
+import com.a3rick.a3rick.models.models.Trick.like_view.GetViewCountResult;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.adroitandroid.chipcloud.ChipCloud;
@@ -124,50 +124,14 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 deleteContentToFavorite();
             }
         });
+
+
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                sendIntent.putExtra(Intent.EXTRA_TEXT,videoFileAddress);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, videoFileAddress);
                 sendIntent.setType("text/plain");
 
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
