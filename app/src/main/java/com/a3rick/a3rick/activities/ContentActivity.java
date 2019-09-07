@@ -22,13 +22,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.a3rick.a3rick.ChangeCategoryItem;
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.content_with_categoriId.AllTag;
-import com.a3rick.a3rick.models.models.Trick.favorites.GetViewCountResult;
 import com.a3rick.a3rick.models.models.Trick.content_with_contentId.GetContentWithIdResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.AddFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.favorites.DeleteFavoriteContentResult;
 import com.a3rick.a3rick.models.models.Trick.favorites.GetLikeDisLikeResult;
+import com.a3rick.a3rick.models.models.Trick.favorites.GetViewCountResult;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.adroitandroid.chipcloud.ChipCloud;
@@ -70,6 +71,12 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     Button dislike;
     Button addFavorite;
     Button deleteFavorite;
+    Button share;
+    ChangeCategoryItem ChangeCategory;
+
+    public ContentActivity() {
+    }
+
     private int totalLike;
     private int totalView;
     private int favoriteId;
@@ -94,8 +101,9 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
     }
 
-    private void init() {
 
+    private void init() {
+        share = findViewById(R.id.share);
         tvSubject = findViewById(R.id.tvSubject);
         tvSubject1 = findViewById(R.id.tv_subject);
         tvBody = findViewById(R.id.tvBody);
@@ -116,7 +124,57 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 deleteContentToFavorite();
             }
         });
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                sendIntent.putExtra(Intent.EXTRA_TEXT,videoFileAddress);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+
+            }
+        });
         like = findViewById(R.id.like);
         dislike = findViewById(R.id.dislike);
         like.setOnClickListener(new View.OnClickListener() {
@@ -161,8 +219,10 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         likeCount = intent.getIntExtra("LIKECOUNT", 20);
         tags = (List<AllTag>) intent.getSerializableExtra("TAGS");
         contentId = intent.getIntExtra("CONTENTID", 1);
+        ChangeCategory = (ChangeCategoryItem) intent.getSerializableExtra("ChangeCategory");
         setupVideoView();
         orientation = getResources().getConfiguration().orientation;
+
 
     }
 
@@ -212,15 +272,12 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         videoView = findViewById(R.id.video_view);
         videoView.setOnPreparedListener(this);
         videoView.showControls();
-
-
         videoView.setVideoURI(Uri.parse(videoFileAddress));
         tvSubject.setText(subject);
         tvSubject1.setText(subject);
         tvBody.setText(body);
-//        tvViewCount.setText(String.valueOf(viewCount));
-//        tvLikeCount.setText(String.valueOf(likeCount));
-        tvTag.addChips(increaseArray(tags));
+        if (tags != null)
+            tvTag.addChips(increaseArray(tags));
         videoView.setOnPreparedListener(this);
         videoView.getVideoControls().hide();
         videoView.getPreviewImageView().setVisibility(View.INVISIBLE);
@@ -234,14 +291,17 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     }
 
     public String[] increaseArray(List<AllTag> tags) {
-        int i = tags.size();
-        int n = i++;
-        String[] newArray = new String[n];
-        for (int cnt = 0; cnt < tags.size(); cnt++) {
-            newArray[cnt] = tags.get(cnt).getTitle();
+        if (tags != null) {
+            int i = tags.size();
+            int n = i++;
+            String[] newArray = new String[n];
+            for (int cnt = 0; cnt < tags.size(); cnt++) {
+                newArray[cnt] = tags.get(cnt).getTitle();
+            }
+            return newArray;
         }
-        return newArray;
 
+        return null;
     }
 
     private void setMatchParent(LinearLayout layout) {
@@ -296,13 +356,16 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     public void onBackPressed() {
         super.onBackPressed();
 
+//       Intent intent = new Intent();
+//       intent.putExtra("CONTENTID_APDATE",contentId);
+//       startActivity(intent);
 //        Intent intent0 = new Intent(ContentActivity.this, CoockCategoryActivity.class);
 //        startActivity(intent0);
 //
 //        Intent intent1 = new Intent(ContentActivity.this, HouseCategoryActivity.class);
 //        startActivity(intent1);
 //
-//        Intent intent2 = new Intent(ContentActivity.this, BeautyCategoryActivity.class);
+//        Intent intent2 = new Intent(ContentActivity.this, CategoryActivity.class);
 //        startActivity(intent2);
 //
 //        Intent intent3 = new Intent(ContentActivity.this, FunCategoryActivity.class);
@@ -323,11 +386,11 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 apiResponse = response.body();
                 totalLike = apiResponse.getResult().getTotalLike();
 
-
                 if (apiResponse.getResult().getIsLiked() == true) {
                     tvLikeCount.setText(String.valueOf(totalLike));
                     like.setVisibility(View.GONE);
                     dislike.setVisibility(View.VISIBLE);
+//                    ChangeCategory.changeDate(viewCount, likeCount, contentId);
                 } else if (apiResponse.getResult().getIsLiked() == false & like.isCursorVisible()) {
                     tvLikeCount.setText(String.valueOf(totalLike));
                     like.setVisibility(View.VISIBLE);
@@ -410,7 +473,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         call.enqueue(new Callback<GetContentWithIdResult>() {
             @Override
             public void onResponse(Call<GetContentWithIdResult> call, Response<GetContentWithIdResult> response) {
-//                Intent intent1 = new Intent(ContentActivity.this,BeautyCategoryActivity.class );
+//                Intent intent1 = new Intent(ContentActivity.this,CategoryActivity.class );
 //                Intent intent2 = new Intent(ContentActivity.this,ContentActivity.class );
 //                Intent intent3 = new Intent(ContentActivity.this,FunCategoryActivity.class );
 //                Intent intent4 = new Intent(ContentActivity.this,HouseCategoryActivity.class );

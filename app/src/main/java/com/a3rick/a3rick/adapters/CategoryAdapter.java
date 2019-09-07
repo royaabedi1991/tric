@@ -12,10 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.activities.BeautyCategoryActivity;
-import com.a3rick.a3rick.activities.CoockCategoryActivity;
-import com.a3rick.a3rick.activities.FunCategoryActivity;
-import com.a3rick.a3rick.activities.HouseCategoryActivity;
+import com.a3rick.a3rick.activities.CategoryActivity;
 import com.a3rick.a3rick.models.models.Trick.categories.GetAllCategoryResult;
 import com.a3rick.a3rick.models.models.Trick.categories.Result;
 import com.a3rick.a3rick.webService.Trick.FileApi;
@@ -55,42 +52,61 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             @Override
             public void onClick(View v) {
 
-
-              Result current = results.get(position);
-
-                switch (position){
-
+                String title = "";
+                Result current = results.get(position);
+                switch (position) {
                     case 0:
-                        Intent intent0 = new Intent(v.getContext(), CoockCategoryActivity.class);
-                        v.getContext().startActivity(intent0);
+                        title = "آشپزی";
                         break;
 
                     case 1:
-                        Intent intent1 = new Intent(v.getContext(), HouseCategoryActivity.class);
-                        v.getContext().startActivity(intent1);
+                        title = "خانه داری";
                         break;
 
                     case 2:
-                        Intent intent2 = new Intent(v.getContext(), BeautyCategoryActivity.class);
-                        v.getContext().startActivity(intent2);
+                        title = "زیبایی";
                         break;
 
                     case 3:
-                        Intent intent3 = new Intent(v.getContext(), FunCategoryActivity.class);
-                        v.getContext().startActivity(intent3);
+                        title = "سرگرمی";
                         break;
-
-
-
-
-
-
-
                 }
 
+                Intent intent2 = new Intent(v.getContext(), CategoryActivity.class);
+                intent2.putExtra("POSOTION", position);
+                intent2.putExtra("TITLE", title);
+                v.getContext().startActivity(intent2);
 
 
-
+//                switch (position){
+//
+//                    case 0:
+//                        Intent intent0 = new Intent(v.getContext(), CoockCategoryActivity.class);
+//                        v.getContext().startActivity(intent0);
+//                        break;
+//
+//                    case 1:
+//                        Intent intent1 = new Intent(v.getContext(), HouseCategoryActivity.class);
+//                        v.getContext().startActivity(intent1);
+//                        break;
+//
+//                    case 2:
+//                        Intent intent2 = new Intent(v.getContext(), CategoryActivity.class);
+//                        v.getContext().startActivity(intent2);
+//                        break;
+//
+//                    case 3:
+//                        Intent intent3 = new Intent(v.getContext(), FunCategoryActivity.class);
+//                        v.getContext().startActivity(intent3);
+//                        break;
+//
+//
+//
+//
+//
+//
+//
+//                }
 
 
             }

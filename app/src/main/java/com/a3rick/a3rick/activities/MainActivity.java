@@ -117,12 +117,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.my_video:
                 selectedItemId = R.id.my_video;
                 pager.setCurrentItem(1, true);
-                tvToolbar.setText("فیلم های من");
+                tvToolbar.setText("علاقه مندی ها");
                 return true;
             case R.id.more:
                 selectedItemId = R.id.more;
                 pager.setCurrentItem(0, true);
-                tvToolbar.setText("بیشتر");
+                tvToolbar.setText("درباره ما");
                 return true;
 
         }

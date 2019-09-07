@@ -11,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
-import com.a3rick.a3rick.activities.BeautyCategoryActivity;
-import com.a3rick.a3rick.activities.CoockCategoryActivity;
-import com.a3rick.a3rick.activities.FunCategoryActivity;
-import com.a3rick.a3rick.activities.HouseCategoryActivity;
+import com.a3rick.a3rick.activities.CategoryActivity;
 import com.a3rick.a3rick.adapters.BeautyAdapter;
 import com.a3rick.a3rick.adapters.CoockAdapter;
 import com.a3rick.a3rick.adapters.FunAdapter;
@@ -32,7 +29,7 @@ public class VitrinFragment extends Fragment {
     TextView seeAllFun;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
 
@@ -46,7 +43,9 @@ public class VitrinFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getContext(), BeautyCategoryActivity.class);
+                Intent intent = new Intent(getContext(), CategoryActivity.class);
+                intent.putExtra("POSOTION", 2);
+                intent.putExtra("TITLE", "زیبایی");
                 startActivity(intent);
 
             }
@@ -54,21 +53,28 @@ public class VitrinFragment extends Fragment {
         seeAllCoock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CoockCategoryActivity.class);
+                Intent intent = new Intent(getContext(), CategoryActivity.class);
+                intent.putExtra("POSOTION",0);
+                intent.putExtra("TITLE", "آشپزی");
                 startActivity(intent);
             }
         });
         seeAllHouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), HouseCategoryActivity.class);
+                Intent intent = new Intent(getContext(), CategoryActivity.class);
+                intent.putExtra("POSOTION",1);
+                intent.putExtra("TITLE", "خانه داری");
                 startActivity(intent);
+
             }
         });
         seeAllFun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), FunCategoryActivity.class);
+                Intent intent = new Intent(getContext(), CategoryActivity.class);
+                intent.putExtra("POSOTION", 3);
+                intent.putExtra("TITLE", "سرگرمی");
                 startActivity(intent);
             }
         });
@@ -101,7 +107,7 @@ public class VitrinFragment extends Fragment {
         coockRecycler.setLayoutManager(coockManager);
 
 
-        //FunRecycler
+//FunRecycler
         RecyclerView funRecycler = (RecyclerView) view.findViewById(R.id.recyceler_fun_category);
         FunAdapter funAdapter = new FunAdapter(getContext(), getResults());
         funRecycler.setAdapter(funAdapter);

@@ -31,10 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.FunCategoryActivity" />
-        <activity android:name=".activities.HouseCategoryActivity" />
-        <activity android:name=".activities.CoockCategoryActivity" />
-        <activity android:name=".activities.BeautyCategoryActivity" />
+        <activity android:name=".activities.CategoryActivity" />
         <activity
             android:name=".activities.ContentActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />

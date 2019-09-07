@@ -17,7 +17,7 @@ public class App extends Application {
         super.onCreate();
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/IRANSansMobile.ttf")
+                .setDefaultFontPath("fonts/IRANSans_UltraLight.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

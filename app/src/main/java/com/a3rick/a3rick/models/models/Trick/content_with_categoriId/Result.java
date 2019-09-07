@@ -3,9 +3,10 @@ package com.a3rick.a3rick.models.models.Trick.content_with_categoriId;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Result {
+public class Result implements Serializable {
 
     @SerializedName("ContentId")
     @Expose

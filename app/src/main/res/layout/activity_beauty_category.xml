@@ -26,12 +26,13 @@
                 android:paddingRight="10dp">
 
                 <TextView
-                    android:text="زیبایی"
+                    android:id="@+id/tv_category_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:textColor="#FFFFFF"
-                    android:textSize="16dp" />
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 

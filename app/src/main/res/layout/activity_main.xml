@@ -51,7 +51,8 @@
                         android:layout_gravity="center"
                         android:text="سلام"
                         android:textColor="#fff"
-                        android:textSize="17dp" />
+                        android:textSize="17dp"
+                       android:textStyle="bold"/>
 
                 </LinearLayout>
 
@@ -91,11 +92,15 @@
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomn_nav"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"
-            app:menu="@menu/bottomn_navigation_menu">
+            android:textDirection="rtl"
+            app:menu="@menu/bottomn_navigation_menu"
+            android:layout_gravity="start"
+            android:tooltipText="@string/textAbout"
+            >
 
         </android.support.design.widget.BottomNavigationView>
 

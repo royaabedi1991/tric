@@ -2,21 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:title="ویترین"
-        android:icon="@drawable/ic_star"
+    <item
         android:id="@+id/vitrin"
+        android:icon="@drawable/ic_star"
+        android:title="ویترین"
         />
+
     <item android:title="دسته بندی"
         android:icon="@drawable/ic_menu"
         android:id="@+id/categori"
         />
-    <item android:title="فیلم های من"
+
+    <item android:title="مورد علاقه"
         android:icon="@drawable/videocam"
         android:id="@+id/my_video"
         />
 
-    <item android:title="بیشتر"
-        android:icon="@drawable/ic_more_horiz_black_24dp"
+    <item android:title="درباره ما"
+        android:icon="@drawable/about"
         android:id="@+id/more"
         />
 </menu>
