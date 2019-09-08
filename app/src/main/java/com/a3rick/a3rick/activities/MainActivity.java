@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     TextView textView;
     TextView tvToolbar;
     ImageView searchBox;
+    ImageView profile;
 
     public void setToolbar(Toolbar toolbar) {
         this.toolbar = toolbar;
@@ -60,7 +61,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private void init() {
 //GetMobileNumber from SharedPreferences
-        mobileNumner = getSharedPreferences("MyPref", 0).getString("PHONENUMBER", "");
+        profile= findViewById(R.id. profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         searchBox = findViewById(R.id.search_box);
@@ -71,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                startActivity(intent);
             }
         });
+
 
 
 //ViewPager

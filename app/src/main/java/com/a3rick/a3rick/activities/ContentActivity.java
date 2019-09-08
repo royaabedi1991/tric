@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -365,7 +367,18 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
             @Override
             public void onFailure(Call<GetLikeDisLikeResult> call, Throwable t) {
                 Log.e("Tag", "error");
-                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("درخواست با خطا مواجه شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
 
             }
         });
@@ -476,7 +489,18 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
             @Override
             public void onFailure(Call<GetContentWithIdResult> call, Throwable t) {
                 Log.e("Tag", "error");
-                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("درخواست با خطا مواجه شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
 
             }
         });
@@ -497,15 +521,38 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
                 addFavorite.setVisibility(View.GONE);
                 deleteFavorite.setVisibility(View.VISIBLE);
-                Toast.makeText(ContentActivity.this, "به لیست علاقه مندی ها افزوده شد", Toast.LENGTH_SHORT).show();
 
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("به لیست علاقه مندی ها افزوده شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setView(layout);
+                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.show();
 
             }
 
             @Override
             public void onFailure(Call<AddFavoriteContentResult> call, Throwable t) {
                 Log.e("Tag", "error");
-                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("درخواست با خطا مواجه شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setView(layout);
+                toast.show();
             }
         });
 
@@ -525,15 +572,38 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
                 addFavorite.setVisibility(View.VISIBLE);
                 deleteFavorite.setVisibility(View.GONE);
-                Toast.makeText(ContentActivity.this, "از لیست علاقه مندی ها حذف شد", Toast.LENGTH_SHORT).show();
 
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("از لیست علاقه مندی ها حذف شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.setView(layout);
+                toast.show();
 
             }
 
             @Override
             public void onFailure(Call<DeleteFavoriteContentResult> call, Throwable t) {
                 Log.e("Tag", "error");
-                Toast.makeText(ContentActivity.this, "درخواست با خطا مواجه شد", Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("درخواست با خطا مواجه شد");
+
+                Toast toast = new Toast(getApplicationContext());
+//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
 
             }
         });

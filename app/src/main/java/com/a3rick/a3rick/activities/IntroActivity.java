@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.core.PrefManager;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class IntroActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -30,6 +32,10 @@ public class IntroActivity extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
