@@ -1,7 +1,7 @@
 <resources>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
+    <string name="next">بعدی</string>
+    <string name="skip">رد شدن</string>
+    <string name="start">بزن بریم</string>
 
     <string name="app_name">تریک</string>
     <string name="title_activity_navigation_drawer">تریک</string>

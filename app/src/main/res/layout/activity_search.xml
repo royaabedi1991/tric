@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_search"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorButumn"
+        android:background="@drawable/toolbar2"
         android:gravity="center">
 
         <LinearLayout
@@ -24,14 +24,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:paddingRight="8dp">
+                android:gravity="right|center_vertical"
+                android:paddingRight="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="fonts/IRANSansMobile.ttf"
-                    android:gravity="center"
                     android:text="انتخاب برچسب"
                     android:textColor="#FFFFFF"
                     android:textSize="17dp"
@@ -77,13 +76,25 @@
 
         <com.adroitandroid.chipcloud.ChipCloud xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
             android:id="@+id/chip_cloud_search"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             chipcloud:deselectTransitionMS="500"
-            chipcloud:deselectedColor="@color/colorButumn"
+            chipcloud:deselectedColor="#B083CA"
             chipcloud:gravity="center"
             chipcloud:selectMode="multi"
+
+            />
+
+        <ProgressBar
+            android:id="@+id/pr_search2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:indeterminate="true"
+            android:indeterminateTint="#654069"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="visible"
 
             />
 
@@ -98,7 +109,7 @@
                 android:id="@+id/search_bottum"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
-                android:background="@drawable/round_button"
+                android:background="@drawable/toolbar2"
                 android:text="جست و جو"
                 android:textColor="@color/white"
                 android:textSize="17dp" />

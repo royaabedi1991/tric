@@ -50,13 +50,14 @@
 
         <EditText
             android:id="@+id/etPin"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="کد ارسال شده را وارد کنید"
             android:inputType="number"
             android:maxLength="4"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:backgroundTint="#605668"/>
     </LinearLayout>
 
 
@@ -69,9 +70,9 @@
         android:gravity="top|center_horizontal">
         <Button
             android:id="@+id/sub"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="35dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/toolbar_back"
             android:text="عضویت"
             android:textColor="@color/white"
             android:textSize="20dp" />

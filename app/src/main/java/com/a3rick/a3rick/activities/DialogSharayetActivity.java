@@ -34,7 +34,7 @@ public class DialogSharayetActivity extends Activity implements View.OnClickList
 //        WebSettings webSettings = webView.getSettings();
 //        webSettings.setJavaScriptEnabled(true);
 
-        webView.loadUrl("file:///android_asset/Sample.html");
+//        webView.loadUrl("file:///android_asset/Sample.html");
 
 
     }

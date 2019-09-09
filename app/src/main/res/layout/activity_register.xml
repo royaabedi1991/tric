@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.3"
             android:gravity="bottom"
             android:orientation="vertical">
 
@@ -72,18 +72,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".1"
-            android:gravity="bottom"
+            android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
 
             <EditText
                 android:id="@+id/etNumber"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="شماره تلفن"
                 android:inputType="number"
                 android:maxLength="11"
+                android:backgroundTint="#605668"
 
                 />
         </LinearLayout>
@@ -98,9 +99,9 @@
 
             <Button
                 android:id="@+id/btnRegister"
-                android:layout_width="250dp"
+                android:layout_width="200dp"
                 android:layout_height="35dp"
-                android:background="@drawable/round_button"
+                android:background="@drawable/toolbar_back"
                 android:text="تایید"
                 android:textColor="@color/white"
                 android:textSize="20dp"
@@ -136,8 +137,9 @@
                 android:layout_marginLeft="60dp"
                 android:gravity="center"
                 android:text="شرایط سرویس"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="italic" />
+                android:textColor="#4527A0"
+                android:textStyle="italic"
+                />
 
             <TextView
                 android:id="@+id/TVterms2"

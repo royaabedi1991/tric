@@ -533,7 +533,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 //                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
-                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
 
             }
@@ -583,7 +583,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 Toast toast = new Toast(getApplicationContext());
 //                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.setDuration(Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.setView(layout);
                 toast.show();
 

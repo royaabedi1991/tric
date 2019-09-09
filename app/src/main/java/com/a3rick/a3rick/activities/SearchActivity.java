@@ -45,6 +45,7 @@ public class SearchActivity extends AppCompatActivity {
     ArrayList<String> arrayList;
     List<Integer> selectedindex;
     ProgressBar progressBar;
+    ProgressBar progressBar2;
 
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -65,6 +66,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void init() {
         progressBar = findViewById(R.id.pr_search);
+        progressBar2 = findViewById(R.id.pr_search2);
         toolbar = findViewById(R.id.toolbar_search);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -184,6 +186,8 @@ public class SearchActivity extends AppCompatActivity {
 //                        arrayList = new ArrayList<String>();
                         contentLists = response.body().getResult();
                         for (int i = 0; i < response.body().getResult().size(); i++) {
+                            progressBar2.setVisibility(View.GONE);
+                            chipCloud.setVisibility(View.VISIBLE);
                             chipCloud.addChips(new String[]{contentLists.get(i).getTitle()});
                         }
 

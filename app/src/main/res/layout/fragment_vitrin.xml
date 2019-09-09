@@ -7,10 +7,45 @@
     android:orientation="vertical"
     tools:context=".activities.SubscribeActivity">
 
+    <LinearLayout
+
+        android:id="@+id/loaing_lenear"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A3B9B9B9"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/pr_register"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:indeterminate="true"
+        android:indeterminateTint="#473049"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="visible"
+
+        />
+</LinearLayout>
+
+
+
+    </LinearLayout>
+
+
     <ScrollView
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layoutDirection="ltr">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,7 +206,6 @@
                             android:textColor="@color/colorAccent"
                             android:textSize="15dp"
                             android:textStyle="bold"
-
 
 
                             />
@@ -380,4 +414,6 @@
 
 
     </ScrollView>
+
+
 </LinearLayout>

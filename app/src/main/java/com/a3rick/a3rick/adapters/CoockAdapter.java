@@ -31,6 +31,7 @@ public class CoockAdapter extends RecyclerView.Adapter<CoockAdapter.Holder> {
     List<Result> result_s;
 
 
+
     public CoockAdapter(Context context, List<Result> result_s) {
         this.result_s = result_s;
         inflater = LayoutInflater.from(context);
@@ -88,6 +89,7 @@ public class CoockAdapter extends RecyclerView.Adapter<CoockAdapter.Holder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.card_coock);
             textView = itemView.findViewById(R.id.tvCoock);
+
         }
 
 
@@ -101,6 +103,7 @@ public class CoockAdapter extends RecyclerView.Adapter<CoockAdapter.Holder> {
                     apiResponse = response.body();
                     if (result_s != null) {
                         result_s = apiResponse.getResult();
+
                         notifyDataSetChanged();
                     }
 

@@ -9,7 +9,7 @@
         android:id="@+id/toolbar_beauty_category"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorButumn"
+        android:background="@drawable/toolbar2"
         android:layoutDirection="ltr">
 
         <LinearLayout

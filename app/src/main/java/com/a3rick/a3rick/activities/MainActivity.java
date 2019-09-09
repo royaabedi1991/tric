@@ -2,12 +2,14 @@ package com.a3rick.a3rick.activities;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     }
+
 
 
     public void setTextView(TextView textView) {
@@ -186,5 +189,40 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+//        super.onBackPressed();
+
+        backButtonHandler();
+        return;
+    }
+
+    public void backButtonHandler() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                MainActivity.this);
+        // Setting Dialog Title
+        alertDialog.setTitle("تریک");
+        // Setting Dialog Message
+        alertDialog.setMessage("آیا می خواهید از برنامه خارج شوید؟");
+        // Setting Icon to Dialog
+//        alertDialog.setIcon(R.drawable.ic_launcher);
+        // Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("بله",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        // Setting Negative "NO" Button
+        alertDialog.setNegativeButton("خیر",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to invoke NO event
+                        dialog.cancel();
+                    }
+                });
+        // Showing Alert Message
+        alertDialog.show();
+    }
 }

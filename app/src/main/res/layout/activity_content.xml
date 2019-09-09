@@ -13,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorButumn"
+        android:background="@drawable/toolbar2"
         android:layoutDirection="ltr">
 
         <LinearLayout
@@ -193,7 +193,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".2"
+                android:layout_weight=".15"
                 android:gravity="bottom"
                 android:orientation="vertical"
                 android:padding="8dp">
@@ -207,10 +207,10 @@
                     android:textSize="15dp" />
             </LinearLayout>
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".5"
+                android:layout_weight=".6"
                 android:gravity="top"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -222,7 +222,7 @@
                     android:justificationMode="inter_word"
                     android:textColor="#000"
                     android:textSize="14dp" />
-            </LinearLayout>
+            </ScrollView>
 
 
             <LinearLayout
@@ -239,7 +239,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     chipcloud:deselectTransitionMS="500"
-                    chipcloud:deselectedColor="@color/colorButumn"
+                    chipcloud:deselectedColor="#B083CA"
                     chipcloud:gravity="right"
                     chipcloud:selectMode="none"
 

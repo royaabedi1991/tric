@@ -32,6 +32,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
 
 
+
     public BeautyAdapter(Context context, List<Result> result_s) {
         this.result_s = result_s;
         inflater = LayoutInflater.from(context);
@@ -93,6 +94,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.card_beauty);
             textView = itemView.findViewById(R.id.tvBeauty);
+
         }
 
 
@@ -107,6 +109,8 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
                     if (result_s != null) {
                         result_s = apiResponse.getResult();
                         notifyDataSetChanged();
+
+
                     }
 
                 }
@@ -131,6 +135,9 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
 
     }
+
+
+
 
 
 

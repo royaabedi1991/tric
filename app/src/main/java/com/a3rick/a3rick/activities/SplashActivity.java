@@ -8,8 +8,13 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a3rick.a3rick.R;
@@ -34,23 +39,16 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-
-
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 checkConnection();
 
 
-
 //                finish();
 
             }
         }, 4000);
-
-
 
 
     }
@@ -64,15 +62,9 @@ public class SplashActivity extends AppCompatActivity {
             public void onResponse(Call<GetSubResult> call, Response<GetSubResult> response) {
 
                 GetSubResult apiResponse = response.body();
-                if (apiResponse.getIsSuccessful() == true && apiResponse.getResult() == true)  {
+                if (apiResponse.getIsSuccessful() == true && apiResponse.getResult() == true) {
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
-
-
-
-
-
-
 
 
                 } else if (apiResponse.getIsSuccessful() == true && apiResponse.getResult() == false) {
@@ -80,9 +72,7 @@ public class SplashActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
                     finish();
 
-                }
-
-                else
+                } else
                     Toast.makeText(SplashActivity.this, "خطا", Toast.LENGTH_SHORT).show();
 
 
@@ -98,8 +88,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-  protected boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
@@ -109,9 +99,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    public void checkConnection(){
+    public void checkConnection() {
 
-        if(isOnline()){
+        if (isOnline()) {
             final SharedPreferences prefs;
             prefs = getApplicationContext().getSharedPreferences("MyPref", 0);
             String MobileNumber = prefs.getString("PHONENUMBER", "");
@@ -122,8 +112,20 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
                 finish();
             }
-        }else{
-            Toast.makeText(SplashActivity.this, "لطفا اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید", Toast.LENGTH_LONG).show();
+        } else {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.toast,
+                    (ViewGroup) findViewById(R.id.custom_toast_container));
+
+            TextView text = (TextView) layout.findViewById(R.id.text);
+            text.setText("اتصال به اینترنت برقرارنیست، برنامه قادر به پاسخگویی نمیباشد");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+            finish();
         }
     }
 
