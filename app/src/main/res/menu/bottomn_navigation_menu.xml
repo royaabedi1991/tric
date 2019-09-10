@@ -6,6 +6,8 @@
         android:id="@+id/vitrin"
         android:icon="@drawable/ic_star"
         android:title="ویترین"
+
+
         />
 
     <item android:title="دسته بندی"

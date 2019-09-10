@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:itemIconTint="@drawable/selector"
-            app:itemTextColor="@drawable/selector"
+            app:itemTextColor="#6A1B9A"
             android:textDirection="rtl"
             app:menu="@menu/bottomn_navigation_menu"
             android:layout_gravity="start"
