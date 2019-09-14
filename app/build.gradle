@@ -43,8 +43,7 @@ dependencies {
     implementation 'com.devbrackets.android:exomedia:4.2.3'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.hannesdorfmann.smoothprogressbar:library:1.0.0'
-    implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.github.adroitandroid:ChipCloud:2.2.1'
-    implementation 'com.jakewharton:butterknife:8.8.1'
+
 }

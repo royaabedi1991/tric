@@ -64,6 +64,7 @@ public class HoseAdapter extends RecyclerView.Adapter<HoseAdapter.Holder> {
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("ISLIKED", current.getIsLiked());
                 intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());
                 intent.putExtra("TAGS", (Serializable) current.getAllTags());
@@ -112,6 +113,8 @@ public class HoseAdapter extends RecyclerView.Adapter<HoseAdapter.Holder> {
                 @Override
                 public void onFailure(Call<GetContentResult> call, Throwable t) {
                     Log.e("Tag", "error");
+//                    Toast.makeText(itemView.getContext(), "اتصال به اینترنت برقرار نیست", Toast.LENGTH_SHORT).show();
+
 
                 }
             });

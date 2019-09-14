@@ -63,6 +63,7 @@ public class FunAdapter extends RecyclerView.Adapter<FunAdapter.Holder> {
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
                 intent.putExtra("ISLIKED", current.getIsLiked());
                 intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());

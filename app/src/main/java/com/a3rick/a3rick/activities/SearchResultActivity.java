@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.a3rick.a3rick.ChangeCategoryItem;
 import com.a3rick.a3rick.R;
@@ -38,11 +39,13 @@ public class SearchResultActivity extends AppCompatActivity {
     SearchResultAdapter searchResultAdapter;
     List<Result> result_s = new ArrayList<>();
     ArrayList selectedTags;
+    LinearLayout linearLayout;
 
 
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
                 intent.putExtra("ISLIKED", current.getIsLiked());
                 intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());
@@ -91,7 +95,7 @@ public class SearchResultActivity extends AppCompatActivity {
 //        tvCategory = findViewById(R.id.tv_category_title);
 
 //        tvCategory.setText(title);
-
+        linearLayout = findViewById(R.id.loai_lenear);
         toolbar_search_result = findViewById(R.id.toolbar_search_result);
         setSupportActionBar(toolbar_search_result);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -132,6 +136,7 @@ public class SearchResultActivity extends AppCompatActivity {
                 if (result_s != null) {
                     result_s = apiResponse.getResult();
                     init();
+                    linearLayout.setVisibility(View.GONE);
 
 
                 }

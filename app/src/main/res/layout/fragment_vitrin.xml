@@ -9,11 +9,11 @@
 
     <LinearLayout
 
-        android:id="@+id/loaing_lenear"
-        android:visibility="gone"
+        android:id="@+id/loai_lenear"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#A3B9B9B9"
+        android:background="#A3ECECEC"
         android:gravity="center"
         android:orientation="vertical"
 

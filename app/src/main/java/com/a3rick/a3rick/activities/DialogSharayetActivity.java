@@ -30,7 +30,7 @@ public class DialogSharayetActivity extends Activity implements View.OnClickList
 
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        WebView webView = (WebView) findViewById(R.id.www1);
+//        WebView webView = (WebView) findViewById(R.id.www1);
 //        WebSettings webSettings = webView.getSettings();
 //        webSettings.setJavaScriptEnabled(true);
 

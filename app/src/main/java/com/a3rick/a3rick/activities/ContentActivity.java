@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,9 +36,9 @@ import com.a3rick.a3rick.models.models.Trick.like_view.GetViewCountResult;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
 import com.adroitandroid.chipcloud.ChipCloud;
-import com.devbrackets.android.exomedia.listener.OnCompletionListener;
 import com.devbrackets.android.exomedia.listener.OnPreparedListener;
 import com.devbrackets.android.exomedia.ui.widget.VideoView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -52,9 +53,11 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     TextView tvBody;
     TextView tvLikeCount;
     TextView tvViewCount;
+    ImageView imageView;
     ChipCloud tvTag;
     int contentId;
     String videoFileAddress;
+    String imageFileAddress;
     String subject;
     Boolean isLiked;
     Boolean isBookmarked;
@@ -99,12 +102,22 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         init();
         getContentWithId();
         getViewCount();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videoFileAddress));
+                intent.setDataAndType(Uri.parse(videoFileAddress), "video/mp4");
+                startActivity(intent);
+            }
+        });
+
 
 
     }
 
 
     private void init() {
+        imageView = findViewById(R.id.image_view);
         share = findViewById(R.id.share);
         tvSubject = findViewById(R.id.tvSubject);
         tvSubject1 = findViewById(R.id.tv_subject);
@@ -177,6 +190,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
 
         videoFileAddress = intent.getStringExtra("VIDEOADRESS");
+        imageFileAddress = intent.getStringExtra("ImageHEADER");
         body = intent.getStringExtra("BODY");
         subject = intent.getStringExtra("SUBJECT");
         isBookmarked = intent.getBooleanExtra("ISBOOKMARKED", true);
@@ -186,9 +200,15 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         tags = (List<AllTag>) intent.getSerializableExtra("TAGS");
         contentId = intent.getIntExtra("CONTENTID", 1);
         ChangeCategory = (ChangeCategoryItem) intent.getSerializableExtra("ChangeCategory");
-        setupVideoView();
-        orientation = getResources().getConfiguration().orientation;
 
+        tvSubject.setText(subject);
+        tvSubject1.setText(subject);
+        tvBody.setText(body);
+        if (tags != null)
+            tvTag.addChips(increaseArray(tags));
+
+        orientation = getResources().getConfiguration().orientation;
+        Picasso.with(this).load(imageFileAddress).fit().centerCrop().into(imageView);
 
     }
 
@@ -233,28 +253,23 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
     }
 
-    private void setupVideoView() {
-
-        videoView = findViewById(R.id.video_view);
-        videoView.setOnPreparedListener(this);
-        videoView.showControls();
-        videoView.setVideoURI(Uri.parse(videoFileAddress));
-        tvSubject.setText(subject);
-        tvSubject1.setText(subject);
-        tvBody.setText(body);
-        if (tags != null)
-            tvTag.addChips(increaseArray(tags));
-        videoView.setOnPreparedListener(this);
-        videoView.getVideoControls().hide();
-        videoView.getPreviewImageView().setVisibility(View.INVISIBLE);
-        videoView.setOnCompletionListener(new OnCompletionListener() {
-            @Override
-            public void onCompletion() {
-                videoView.restart();
-                firstPlay = false;
-            }
-        });
-    }
+//    private void setupVideoView() {
+//
+//        videoView = findViewById(R.id.video_view);
+//        videoView.setOnPreparedListener(this);
+//        videoView.showControls();
+//        videoView.setVideoURI(Uri.parse(videoFileAddress));
+//        videoView.setOnPreparedListener(this);
+//        videoView.getVideoControls().hide();
+//        videoView.getPreviewImageView().setVisibility(View.INVISIBLE);
+//        videoView.setOnCompletionListener(new OnCompletionListener() {
+//            @Override
+//            public void onCompletion() {
+//                videoView.restart();
+//                firstPlay = false;
+//            }
+//        });
+//    }
 
     public String[] increaseArray(List<AllTag> tags) {
         if (tags != null) {
@@ -303,16 +318,16 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     @Override
     public void onPause() {
         super.onPause();
-        videoView.pause();
+//        videoView.pause();
     }
 
 
     @Override
     public void onPrepared() {
         if (firstPlay) {
-            videoView.start();
+//            videoView.start();
         } else {
-            videoView.pause();
+//            videoView.pause();
         }
 
 
@@ -494,7 +509,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                         (ViewGroup) findViewById(R.id.custom_toast_container));
 
                 TextView text = (TextView) layout.findViewById(R.id.text);
-                text.setText("درخواست با خطا مواجه شد");
+                text.setText("اتصال به اینترنت برقرار نیست");
 
                 Toast toast = new Toast(getApplicationContext());
 //                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.ChangeCategoryItem;
@@ -36,6 +37,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class CategoryActivity extends AppCompatActivity {
     Toolbar toolbar_beauty_category;
+    LinearLayout linearLayout;
     TextView tvLikeCount;
     TextView tvViewCount;
     TextView tvCategory;
@@ -51,7 +53,6 @@ public class CategoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -103,6 +104,7 @@ public class CategoryActivity extends AppCompatActivity {
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
                 intent.putExtra("ISLIKED", current.getIsLiked());
                 intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());
@@ -120,6 +122,7 @@ public class CategoryActivity extends AppCompatActivity {
         tvLikeCount = findViewById(R.id.like_count_categories);
         tvViewCount = findViewById(R.id.view_count_categories);
         tvCategory = findViewById(R.id.tv_category_title);
+        linearLayout= findViewById(R.id.loai_lenear);
 
         tvCategory.setText(title);
 
@@ -181,6 +184,8 @@ public class CategoryActivity extends AppCompatActivity {
                 if (result_s != null) {
                     result_s = apiResponse.getResult();
                     init();
+                    linearLayout.setVisibility(View.GONE);
+
 
 
                 }

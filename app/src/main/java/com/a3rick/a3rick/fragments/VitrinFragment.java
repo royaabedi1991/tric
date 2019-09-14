@@ -1,13 +1,18 @@
 package com.a3rick.a3rick.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
@@ -27,11 +32,26 @@ public class VitrinFragment extends Fragment {
     TextView seeAllCoock;
     TextView seeAllHouse;
     TextView seeAllFun;
+    LinearLayout linearLayout;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
+
+
+        final View view = inflater.inflate(R.layout.fragment_vitrin, container, false);
+
+        linearLayout = view.findViewById(R.id.loai_lenear);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                linearLayout.setVisibility(View.GONE);
+
+
+            }
+        }, 2000);
 
 
         seeAllBeauty = view.findViewById(R.id.seen_all_beauity);
@@ -54,7 +74,7 @@ public class VitrinFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryActivity.class);
-                intent.putExtra("POSOTION",0);
+                intent.putExtra("POSOTION", 0);
                 intent.putExtra("TITLE", "آشپزی");
                 startActivity(intent);
             }
@@ -63,7 +83,7 @@ public class VitrinFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CategoryActivity.class);
-                intent.putExtra("POSOTION",1);
+                intent.putExtra("POSOTION", 1);
                 intent.putExtra("TITLE", "خانه داری");
                 startActivity(intent);
 
@@ -78,7 +98,6 @@ public class VitrinFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 //BeautyRecycler
         RecyclerView beautyRecycler = (RecyclerView) view.findViewById(R.id.recyceler_beauty_category);
@@ -132,5 +151,29 @@ public class VitrinFragment extends Fragment {
 
     }
 
+
+    public void checkConnection() {
+
+        if (isOnline()) {
+
+
+
+            } else {
+
+
+            }
+
+
+    }
+
+    protected boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

@@ -36,7 +36,7 @@
                     android:gravity="right|center_vertical"
                     android:textColor="#FFFFFF"
                     android:textSize="15dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -54,17 +54,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.35"
+            android:layout_weight="0.4"
             android:gravity="center">
 
-            <com.devbrackets.android.exomedia.ui.widget.VideoView
-                android:id="@+id/video_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layoutDirection="ltr"
-                app:useDefaultControls="true"
 
-                />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layoutDirection="ltr" />
+
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_play_circle_outline_black_24dp"
+                        >
+
+                    </ImageView>
+
+                </RelativeLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -231,8 +247,8 @@
                 android:layout_weight=".2"
                 android:gravity="top"
                 android:orientation="vertical"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <com.adroitandroid.chipcloud.ChipCloud xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/chip_cloud"

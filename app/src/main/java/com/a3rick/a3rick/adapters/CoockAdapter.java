@@ -58,6 +58,7 @@ public class CoockAdapter extends RecyclerView.Adapter<CoockAdapter.Holder> {
 
                 Result current = result_s.get(position);
                 Intent intent = new Intent(v.getContext(), ContentActivity.class);
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());

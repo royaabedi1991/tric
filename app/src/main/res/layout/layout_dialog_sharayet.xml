@@ -2,24 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:padding="10dp"
+
+    >
 
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:layout_height="400dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.04"
-            android:paddingRight="4dp"
             android:gravity="right"
-            >
+            android:paddingRight="4dp">
 
             <ImageButton
                 android:id="@+id/btnClose_dialog_sharayet"
@@ -29,50 +31,62 @@
                 android:src="@android:drawable/ic_delete" />
 
             <!--<ImageView-->
-                <!--android:id="@+id/btnClose_dialog_sharayet"-->
-                <!--android:layout_width="30dp"-->
-                <!--android:layout_height="27dp"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_marginTop="-1dp"-->
-                <!--android:layout_marginRight="-2dp"-->
-                <!--android:background="@color/black"-->
-                <!--app:srcCompat="@mipmap/ic_close_white_24dp"-->
-                <!--tools:srcCompat="@mipmap/ic_close_white_24dp" />-->
+            <!--android:id="@+id/btnClose_dialog_sharayet"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="27dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginTop="-1dp"-->
+            <!--android:layout_marginRight="-2dp"-->
+            <!--android:background="@color/black"-->
+            <!--app:srcCompat="@mipmap/ic_close_white_24dp"-->
+            <!--tools:srcCompat="@mipmap/ic_close_white_24dp" />-->
 
         </RelativeLayout>
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.87"
+            android:layout_weight="0.3"
             android:paddingLeft="8dp"
             android:paddingRight="8dp">
 
-            <WebView
-                android:id="@+id/www1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+            <!--<WebView-->
+            <!--android:id="@+id/www1"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:justificationMode="inter_word"
+                android:padding="15dp"
+                android:text="@string/textAbout"
+                android:textColor="#000"
+                android:textSize="16dp" />
 
-        </LinearLayout>
+
+        </ScrollView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.1"
-            android:paddingLeft="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
 
             <Button
                 android:id="@+id/btn_dialog_sharayet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" تایید "
-                android:textColor="#000000"
-                android:textSize="25sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@color/white"
+                android:text=" تایید "
+                android:textColor="#000000"
+                android:textSize="25sp"
 
                 />
 
@@ -80,8 +94,6 @@
 
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

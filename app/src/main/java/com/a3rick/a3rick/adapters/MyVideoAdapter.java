@@ -84,6 +84,7 @@ public class MyVideoAdapter extends RecyclerView.Adapter<MyVideoAdapter.Holder> 
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("ISLIKED", current.getIsLiked());
                 intent.putExtra("ISBOOKMARKED", current.getIsBookmarked());
                 intent.putExtra("TAGS", (Serializable) current.getAllTags());

@@ -64,6 +64,7 @@ public class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.Holder> {
 
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
+                intent.putExtra("ImageHEADER", current.getHeaderImageFileAddress());
                 intent.putExtra("BODY", current.getBody());
                 intent.putExtra("LIKECOUNT", current.getLikeCount());
                 intent.putExtra("ISLIKED", current.getIsLiked());
