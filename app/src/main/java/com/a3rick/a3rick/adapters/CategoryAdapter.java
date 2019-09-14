@@ -17,6 +17,7 @@ import com.a3rick.a3rick.models.models.Trick.categories.GetAllCategoryResult;
 import com.a3rick.a3rick.models.models.Trick.categories.Result;
 import com.a3rick.a3rick.webService.Trick.FileApi;
 import com.a3rick.a3rick.webService.Trick.RetrofitClient;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -160,7 +161,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
         public void setData(int position) {
             Result current = results.get(position);
-//            Picasso.with(itemView.getContext()).load(current.getBannerImageFileAddress()).centerCrop().fit().into(imageView);
+            Picasso.with(itemView.getContext()).load(current.getBannerImageFileAddress()).centerCrop().fit().into(imageView);
             textView.setText(current.getName());
 
 
