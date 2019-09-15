@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
 
+
     >
 
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:background="@color/white"
         android:orientation="vertical">
 
 
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.04"
+            android:layout_weight="0.015"
             android:gravity="right"
             android:paddingRight="4dp">
 
@@ -47,7 +49,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.1"
             android:paddingLeft="8dp"
             android:paddingRight="8dp">
 
@@ -60,12 +62,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_gravity="top"
                 android:justificationMode="inter_word"
                 android:padding="15dp"
                 android:text="@string/textAbout"
                 android:textColor="#000"
-                android:textSize="16dp" />
+                android:textSize="15dp"
+                android:layout_marginTop="5dp"/>
 
 
         </ScrollView>
@@ -73,9 +76,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.02"
             android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="15dp">
 
             <Button
                 android:id="@+id/btn_dialog_sharayet"
@@ -86,7 +90,9 @@
                 android:background="@color/white"
                 android:text=" تایید "
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="20sp"
+
+
 
                 />
 
@@ -96,4 +102,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.25"
             android:gravity="bottom"
             android:orientation="vertical">
 
@@ -71,20 +71,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1"
+            android:layout_weight=".08"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
 
+
+            <!--<android.support.v7.widget.AppCompatEditText-->
+            <!--android:id="@+id/etNumber"-->
+            <!--android:layout_width="250dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textColorHint="#5A5252"-->
+            <!--android:textSize="12sp"-->
+            <!--android:hint= "لطفا شماره همراه خود را وارد کنید "-->
+            <!--/>-->
             <EditText
                 android:id="@+id/etNumber"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="شماره تلفن"
                 android:inputType="number"
                 android:maxLength="11"
-                android:backgroundTint="#605668"
+                android:textStyle="italic"
+
+
 
                 />
         </LinearLayout>
@@ -94,17 +109,33 @@
             android:id="@+id/linear_btn_register"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".10"
-            android:gravity="center">
+            android:layout_weight=".08"
+            android:gravity="top|center_horizontal">
+
 
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="200dp"
                 android:layout_height="35dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/toolbar_back"
                 android:text="تایید"
                 android:textColor="@color/white"
                 android:textSize="20dp"
+                android:visibility="visible"
+
+                />
+
+
+            <ProgressBar
+                android:id="@+id/pr_register"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#473049"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
 
                 />
         </LinearLayout>
@@ -114,44 +145,52 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".05"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical"
 
             >
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginRight="-15dp"
+            <LinearLayout
+                android:id="@+id/linear_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="موافقم"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                android:orientation="horizontal"
 
-            <TextView
-                android:id="@+id/tv_terms"
-                android:layout_width="100dp"
-                android:layout_height="21dp"
-                android:layout_margin="10dp"
-                android:layout_marginLeft="60dp"
-                android:gravity="center"
-                android:text="شرایط سرویس"
-                android:textColor="#4527A0"
-                android:textStyle="italic"
-                />
+                >
 
-            <TextView
-                android:id="@+id/TVterms2"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="-20dp"
-                android:gravity="center"
-                android:text="با"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="-15dp"
+                    android:gravity="center"
+                    android:text="موافقم"
+                    android:textColor="#000000"
+                    android:textSize="15dp" />
 
+                <TextView
+                    android:id="@+id/tv_terms"
+                    android:layout_width="100dp"
+                    android:layout_height="21dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="60dp"
+                    android:gravity="center"
+                    android:text="شرایط سرویس"
+                    android:textColor="#4527A0"
+                    android:textStyle="italic" />
 
+                <TextView
+                    android:id="@+id/TVterms2"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="-20dp"
+                    android:gravity="center"
+                    android:text="با"
+                    android:textColor="#000000"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -174,28 +213,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".07"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ProgressBar
-                android:id="@+id/pr_register"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:indeterminate="true"
-                android:indeterminateTint="#473049"
-                android:indeterminateTintMode="src_atop"
-                android:visibility="gone"
-
-                />
-
-        </LinearLayout>
 
     </LinearLayout>
 
-
 </LinearLayout>
+
+
 

@@ -16,7 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
@@ -32,8 +32,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     String mobileNumner;
     TextView textView;
     TextView tvToolbar;
-    ImageView searchBox;
-    ImageView profile;
+   LinearLayout searchBox;
+    LinearLayout profile;
+
 
     public void setToolbar(Toolbar toolbar) {
         this.toolbar = toolbar;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private void init() {
 //GetMobileNumber from SharedPreferences
-        profile= findViewById(R.id. profile);
+        profile= findViewById(R.id. profile_linear);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

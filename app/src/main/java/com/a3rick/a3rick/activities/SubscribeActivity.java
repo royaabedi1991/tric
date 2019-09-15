@@ -1,8 +1,15 @@
 package com.a3rick.a3rick.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,6 +28,7 @@ import com.a3rick.a3rick.webService.OTP.APIInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SubscribeActivity extends AppCompatActivity/* implements View.OnClickListener*/ {
 
@@ -39,8 +47,12 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
     private Long ressult;
     private Boolean isSucssesful;
     private ProgressBar progressBar;
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
     public SubscribeActivity() {
+
     }
 
 
@@ -73,6 +85,14 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
 
         etPin = findViewById(R.id.etPin);
         Emassage = findViewById(R.id.TVmasege);
+        Emassage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubscribeActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         subscribe = findViewById(R.id.sub);
         ServiceId = "11";
         progressBar = findViewById(R.id.pr_subscribe);
@@ -81,7 +101,13 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
     }
 
     public void validator() {
-        if (!etPin.getText().toString().equals("")) {
+
+        String errorString = "کد صحیح را وارد کنید";  // Your custom error message.
+        int errorColor = getResources().getColor(R.color.dot_dark_screen1);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+        spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+        if (!etPin.getText().toString().equals("") & (etPin.getText().length() == 4)) {
 
 
             if (fromWhere.equals("RESULT")) {
@@ -90,20 +116,26 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
                 subscribeUserViaCode(ServiceId, TransactionId, String.valueOf(etPin.getText()));
             }
 
-        } else {
-            Toast.makeText(this, "کد صحیح نیست", Toast.LENGTH_SHORT).show();
+        } else if (etPin.getText().length() < 4 && !etPin.getText().toString().equals("")) {
+            etPin.setError(errorString);
+            etPin.setBackgroundResource(R.drawable.et_red_back);
             progressBar.setVisibility(View.GONE);
+        } else if (etPin.getText().toString().equals("")) {
 
+            etPin.setError(errorString);
+            etPin.setBackgroundResource(R.drawable.et_red_back);
         }
     }
 
     private void subscribeUser(String ServiceId, String TransactionId, String Pin) {
         progressBar.setVisibility(View.VISIBLE);
+        subscribe.setVisibility(View.GONE);
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ApiResult> call = apiInterface.subscribeUser(ServiceId, TransactionId, etPin.getText().toString());
         call.enqueue(new Callback<ApiResult>() {
             @Override
             public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
+                CoordinatorLayout coordinatorLayout = findViewById(R.id.crd_layout);
 
 
                 ApiResult apiResponse = new ApiResult();
@@ -122,11 +154,29 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
                             , Toast.LENGTH_LONG).show();
                 } else if (apiResponse.getIsSuccessful() == false && apiResponse.getResult() == 0) {
                     progressBar.setVisibility(View.GONE);
-                    Emassage.setText("خطا، لطفا کد 4 رقمی ای که توسط پیامک دریافت کرده اید را مجددا وارد کرده و بعد از چند لحظه مجددا تلاش کنید");
+                    subscribe.setVisibility(View.VISIBLE);
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "کد وارد شده اشتباه است، دوباره تلاش کنید", Snackbar.LENGTH_LONG);
+                    TextView mainTextView = (TextView) (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
 
                 } else {
                     progressBar.setVisibility(View.GONE);
-                    Emassage.setText("خطا");
+                    subscribe.setVisibility(View.VISIBLE);
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "خطای سیستمی", Snackbar.LENGTH_LONG);
+                    TextView mainTextView = (TextView) (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
                 }
 
 
@@ -144,12 +194,13 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
 
     private void subscribeUserViaCode(String ServiceId, String TransactionId, String Pin) {
         progressBar.setVisibility(View.VISIBLE);
+        subscribe.setVisibility(View.GONE);
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ApiResult> call = apiInterface.subscribeUserViaCode(ServiceId, TransactionId, Pin);
         call.enqueue(new Callback<ApiResult>() {
             @Override
             public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
-
+                CoordinatorLayout coordinatorLayout = findViewById(R.id.crd_layout);
                 ApiResult apiResponse = response.body();
 
                 if (apiResponse.getIsSuccessful() == true && apiResponse.getResult().equals(mobileNumber)) {
@@ -163,15 +214,40 @@ public class SubscribeActivity extends AppCompatActivity/* implements View.OnCli
 
                             , Toast.LENGTH_LONG).show();
                 } else if (apiResponse.getIsSuccessful() == false && apiResponse.getResult() == -2) {
-
-                    Emassage.setText("خطای سیستمی، لطفا مجدد تلاش کنید");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "خطای سیستمی، لطفا مجدد تلاش کنید", Snackbar.LENGTH_LONG);
+                    TextView mainTextView = (TextView) (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
                     progressBar.setVisibility(View.GONE);
+                    subscribe.setVisibility(View.VISIBLE);
                 } else if (apiResponse.getIsSuccessful() == false && apiResponse.getResult() == -4) {
-                    Emassage.setText("پین کد وارد شده اشتباه است، لطفا دوباره تلاش کنید");
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "پین کد وارد شده اشتباه است، لطفا دوباره تلاش کنید", Snackbar.LENGTH_LONG).setActionTextColor(2);
+                    TextView mainTextView = (TextView) (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
                     progressBar.setVisibility(View.GONE);
+                    subscribe.setVisibility(View.VISIBLE);
                 } else {
-                    Emassage.setText("مشترک گرامی لطفا بعد از چند دقیقه دوباره تلاش کنید");
-                    progressBar.setVisibility(View.GONE);
+
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "مشترک گرامی لطفا بعد از چند دقیقه دوباره تلاش کنید", Snackbar.LENGTH_LONG);
+                    TextView mainTextView = (TextView) (snackbar.getView()).findViewById(android.support.design.R.id.snackbar_text);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        mainTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    mainTextView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
                 }
             }
 

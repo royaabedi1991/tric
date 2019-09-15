@@ -3,15 +3,15 @@
     <color name="colorPrimary">#8131B3</color>
     <color name="colorPrimaryDark">#6A1B9A</color>
     <color name="colorAccent">#AD1457</color>
-    <color name="colorButumn">#49a5b6</color>
-    <color name="color2Butumn">#49a5b6</color>
+    <color name="colorButumn">#666666</color>
+    <color name="color2Butumn">#60696B</color>
     <color name="colorText">#9f2fac</color>
     <color name="white">#fff</color>
     <color name="back">#fff</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#d1395c</color>
-    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen2">#555555</color>
     <color name="dot_dark_screen3">#2278d4</color>
     <color name="dot_dark_screen4">#a854d4</color>
 

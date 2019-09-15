@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,8 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
     Boolean isSucessful;
     Long result;
     SharedPreferences.Editor editor;
+    LinearLayout linear_terms;
 
-
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +51,21 @@ public class RegisterActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        progressBar=findViewById(R.id.pr_register);
+        progressBar = findViewById(R.id.pr_register);
 
         etMobileNumber = findViewById(R.id.etNumber);
-        textView = findViewById(R.id.tv_terms);
+        linear_terms = findViewById(R.id.linear_terms);
         register = findViewById(R.id.btnRegister);
 //        btnTerms=findViewById(R.id.btn_terms);
         ServiceId = 11;
         Channel = "AnyText";
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        linear_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               Intent intent = new Intent (RegisterActivity.this, DialogSharayetActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(RegisterActivity.this, DialogSharayetActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -76,25 +83,34 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
-    public void validator(){
-        if(!etMobileNumber.getText().toString().equals("")){
+
+    public void validator() {
+        String errorString = "شماره صحیح را وارد کنید";  // Your custom error message.
+        int errorColor = getResources().getColor(R.color.dot_dark_screen1);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+        spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+
+        if (!etMobileNumber.getText().toString().equals("")& (etMobileNumber.getText().length()==11)) {
 
             editor.putString("PHONENUMBER", String.valueOf(etMobileNumber.getText()));
             editor.apply();
             registerUser(String.valueOf(etMobileNumber.getText()), ServiceId, Channel);
 
-        }else {
-            Toast.makeText(this, "شماره صحیح وارد نشده است", Toast.LENGTH_SHORT).show();
-           // etMobileNumber.setError("شماره صحیح وارد نشده است");
+        } else if(etMobileNumber.getText().length()<11 && !etMobileNumber.getText().toString().equals(""))  {
+            etMobileNumber.setError(errorString);
+            etMobileNumber.setBackgroundResource(R.drawable.et_red_back);
+        } else if (etMobileNumber.getText().toString().equals("")) {
+            etMobileNumber.setError(errorString);
+            etMobileNumber.setBackgroundResource(R.drawable.et_red_back);
+//            Toast.makeText(this, "شماره صحیح وارد نشده است", Toast.LENGTH_SHORT).show();
+//           // etMobileNumber.setError("شماره صحیح وارد نشده است");
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     private void registerUser(final String MobileNumber, int ServiceId, String Channel) {
+        register.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<ApiResult> call = apiInterface.registerUser(MobileNumber, ServiceId, Channel);
@@ -106,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                     result = response.body().getResult();
 
 
-                    if (isSucessful == true &  result> 0) {
+                    if (isSucessful == true & result > 0) {
                         Intent intent = new Intent(RegisterActivity.this, SubscribeActivity.class);
                         finish();
                         intent.putExtra("NUMBER", etMobileNumber.getText().toString());
@@ -114,8 +130,8 @@ public class RegisterActivity extends AppCompatActivity {
                         intent.putExtra("FROMWHER", "RESULT");
 
                         startActivity(intent);
-                        Toast.makeText(RegisterActivity.this, "درخواست عضویت با موفقیت انجام شد "
-                                , Toast.LENGTH_LONG).show();
+//                        Toast.makeText(RegisterActivity.this, "درخواست عضویت با موفقیت انجام شد "
+//                                , Toast.LENGTH_LONG).show();
 
                     } else if (isSucessful == true & result == -1) {
                         Intent intent = new Intent(RegisterActivity.this, SubscribeActivity.class);
@@ -127,6 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         progressBar.setVisibility(View.GONE);
+                        register.setVisibility(View.VISIBLE);
                         Toast.makeText(getApplicationContext(), "لطفا بعد از چند دقیقه مجدد تلاش کنید", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -135,13 +152,11 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ApiResult> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
+                register.setVisibility(View.VISIBLE);
                 Toast.makeText(getApplicationContext(), "لطفا بعد از چند دقیقه مجدد تلاش کنید", Toast.LENGTH_LONG).show();
 
             }
         });
-
-
-
 
 
     }

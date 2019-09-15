@@ -14,6 +14,11 @@
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <solid android:color="#6A1B9A"/>
+            <gradient
+                android:startColor="#CB7CF8"
+                android:endColor="#590194"
+                android:angle="45"/>
+            <corners android:radius="200dp"/>
         </shape>
     </item>
 

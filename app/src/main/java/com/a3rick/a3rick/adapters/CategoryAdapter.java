@@ -127,6 +127,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
         private ImageView imageView;
         private TextView textView;
 
+
+
+
+
+
+
+
+
+
+
         public Holder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imgage_category);
