@@ -1,11 +1,9 @@
 package com.a3rick.a3rick.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -42,30 +40,30 @@ public class ProfileActivity extends AppCompatActivity {
 //        toolbar_profole.getNavigationIcon().setColorFilter(getResources().getColor(R.color.back), PorterDuff.Mode.SRC_ATOP);
 
         mobileNumner = getSharedPreferences("MyPref", 0).getString("PHONENUMBER", "");
-        textView = findViewById(R.id.TVnumber);
-        textView.setText(mobileNumner);
-        relativeLayout_about = findViewById(R.id.relative_darbare);
-        relativeLayout_sgare = findViewById(R.id.relative_eshterak);
+//        textView = findViewById(R.id.show_number);
+//        textView.setText(mobileNumner);
+//        relativeLayout_about = findViewById(R.id.relative_darbare);
+//        relativeLayout_sgare = findViewById(R.id.relative_eshterak);
 
-        relativeLayout_sgare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://hubland.ir/apps/Trick.apk");
-                sendIntent.setType("text/plain");
-
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
-            }
-        });
-        relativeLayout_about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, AboutActivity.class);
-                startActivity(intent);
-            }
-        });
+//        relativeLayout_sgare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent sendIntent = new Intent();
+//                sendIntent.setAction(Intent.ACTION_SEND);
+//                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://hubland.ir/apps/Trick.apk");
+//                sendIntent.setType("text/plain");
+//
+//                Intent shareIntent = Intent.createChooser(sendIntent, null);
+//                startActivity(shareIntent);
+//            }
+//        });
+//        relativeLayout_about.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ProfileActivity.this, AboutActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 

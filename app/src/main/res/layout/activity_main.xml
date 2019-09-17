@@ -101,6 +101,8 @@
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="#6A1B9A"
             android:textDirection="rtl"
+            android:layoutMode="clipBounds"
+
             app:menu="@menu/bottomn_navigation_menu"
             android:layout_gravity="start"
             android:tooltipText="@string/textAbout"
