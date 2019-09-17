@@ -76,7 +76,7 @@
 
         <!--</android.support.v7.widget.Toolbar>-->
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right|bottom"
@@ -92,7 +92,16 @@
 
 
                 />
-        </LinearLayout>
+
+
+          <ImageButton
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:background="@drawable/back_white"/>
+
+
+        </RelativeLayout>
 
 
         <TextView
