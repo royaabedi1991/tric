@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,6 +76,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
     Button addFavorite;
     Button deleteFavorite;
     Button share;
+    LinearLayout shareLeaneer;
     ChangeCategoryItem ChangeCategory;
 
     public ContentActivity() {
@@ -112,13 +112,13 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         });
 
 
-
     }
 
 
     private void init() {
         imageView = findViewById(R.id.image_view);
         share = findViewById(R.id.share);
+        shareLeaneer = findViewById(R.id.share_leaneer);
         tvSubject = findViewById(R.id.tvSubject);
         tvSubject1 = findViewById(R.id.tv_subject);
         tvBody = findViewById(R.id.tvBody);
@@ -141,7 +141,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         });
 
 
-        share.setOnClickListener(new View.OnClickListener() {
+        shareLeaneer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
@@ -151,6 +151,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
+                shareLeaneer.setClickable(false);
 
             }
         });
@@ -542,13 +543,12 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                         (ViewGroup) findViewById(R.id.custom_toast_container));
 
                 TextView text = (TextView) layout.findViewById(R.id.text);
-                text.setText("به لیست علاقه مندی ها افزوده شد");
+                text.setText("ویدئو ذخیره شد");
 
                 Toast toast = new Toast(getApplicationContext());
 //                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
-                toast.setGravity(Gravity.BOTTOM, 0, 0);
                 toast.show();
 
             }
@@ -564,7 +564,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                 text.setText("درخواست با خطا مواجه شد");
 
                 Toast toast = new Toast(getApplicationContext());
-//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+//              toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.setDuration(Toast.LENGTH_SHORT);
                 toast.setView(layout);
                 toast.show();
@@ -593,12 +593,12 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
                         (ViewGroup) findViewById(R.id.custom_toast_container));
 
                 TextView text = (TextView) layout.findViewById(R.id.text);
-                text.setText("از لیست علاقه مندی ها حذف شد");
+                text.setText("از لیست ذخیره ها حذف شد");
 
                 Toast toast = new Toast(getApplicationContext());
 //                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                 toast.setDuration(Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM, 0, 0);
+
                 toast.setView(layout);
                 toast.show();
 
@@ -626,5 +626,9 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        shareLeaneer.setClickable(true);
+    }
 }

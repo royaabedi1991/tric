@@ -15,7 +15,7 @@ import com.a3rick.a3rick.R;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
-public class DialogSharayetActivity extends Activity implements View.OnClickListener {
+public class EditProfileActivity extends Activity implements View.OnClickListener {
 
 
     ImageButton btnCloseDialogSharayet;
@@ -29,11 +29,10 @@ public class DialogSharayetActivity extends Activity implements View.OnClickList
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_dialog_sharayet);
-        btnCloseDialogSharayet = findViewById(R.id.btnClose_dialog_sharayet);
-        btnDialogSharayet= findViewById(R.id.btn_dialog_sharayet);
-        btnDialogSharayet.setOnClickListener(this);
-        btnCloseDialogSharayet.setOnClickListener(this);
+        setContentView(R.layout.activity_edit_profile);
+//        btnDialogSharayet= findViewById(R.id.btn_dialog_sharayet);
+//        btnDialogSharayet.setOnClickListener(this);
+
 
 
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);

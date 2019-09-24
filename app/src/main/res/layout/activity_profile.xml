@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_profile"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/toolbar2"
@@ -23,15 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="right|center_vertical"
-                android:paddingRight="8dp">
+                android:paddingRight="15dp">
 
                 <TextView
                     android:id="@+id/tv_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
+                    android:text="پروفایل"
                     android:textColor="#FFFFFF"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -66,22 +67,17 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".5"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:padding="5dp">
-
 
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/pro_pro"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="151dp"
+                        android:layout_height="146dp"
                         android:layout_gravity="center_vertical|right"
-                        android:padding="8dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile_sample"
+                        android:src="@drawable/profilebanafsh"
                         app:riv_corner_radius="100dp"
-
-
 
 
                         />
@@ -91,14 +87,128 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".5">
+                    android:layout_weight=".5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".4"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="10dp">
 
 
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".35"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="10dp">
+
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/group_15272" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="10dp"
+                            android:text="نام و نام خانوادگی"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight=".35"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="10dp">
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/group_15274" />
+
+                        <TextView
+                            android:id="@+id/show_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="10dp"
+                            android:text="091xxxxxxxx"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight=".19"
+                        android:gravity="right"
+                        android:orientation="horizontal"
+                        android:paddingRight="50dp">
+
+                        <LinearLayout
+                            android:id="@+id/edit_name_leanear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+
+
+                            >
+
+                            <TextView
+                                android:id="@+id/virayesh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="8dp"
+                                android:text="ویرایش"
+                                android:textColor="#7c34ae"
+                                android:textSize="12dp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="5dp"
+                                android:src="@drawable/group_15271" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".4"
+                        android:gravity="right|center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="10dp">
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
-
-
 
 
             </LinearLayout>
@@ -209,41 +319,43 @@
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1.3"
-
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right|center_vertical|bottom"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="15dp"
-                android:src="@drawable/group_15266" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="75dp"
-                android:layout_marginBottom="15dp"
-                android:gravity="center_vertical|bottom"
-                android:text="درباره ما"
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:textStyle="bold"
+            android:longClickable="true">
 
 
-                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical|bottom"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:src="@drawable/group_15266" />
 
-            </TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="75dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center_vertical|bottom"
+                    android:text="درباره ما"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical|bottom"
-                android:layout_marginBottom="15dp"
-                android:paddingLeft="15dp"
-                android:src="@drawable/tik" />
+
+                    >
+
+                </TextView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical|bottom"
+                    android:layout_marginBottom="15dp"
+                    android:paddingLeft="15dp"
+                    android:src="@drawable/tik" />
+
+
 
         </android.support.v7.widget.CardView>
 
@@ -257,8 +369,8 @@
             >
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/group_15267" />
@@ -298,8 +410,8 @@
             >
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/group_15268" />
@@ -309,7 +421,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="75dp"
                 android:gravity="center_vertical"
-                android:text="ویدئوهای پربازدید"
+                android:text="ویدئوهای مورد علاقه"
                 android:textColor="#000"
                 android:textSize="15dp"
                 android:textStyle="bold"
@@ -334,13 +446,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="1"
-
-            >
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/group_15269" />
@@ -350,7 +460,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="75dp"
                 android:gravity="center_vertical"
-                android:text="ویدئوهای مورد علاقه"
+                android:text="ویدئوهای ذخیره شده"
                 android:textColor="#000"
                 android:textSize="15dp"
                 android:textStyle="bold"

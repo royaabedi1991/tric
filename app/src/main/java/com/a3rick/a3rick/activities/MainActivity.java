@@ -16,11 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.a3rick.a3rick.R;
 import com.a3rick.a3rick.adapters.CustomPagerAdapter;
+import com.a3rick.a3rick.core.BottomNavigationViewHelper;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -32,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     String mobileNumner;
     TextView textView;
     TextView tvToolbar;
-   LinearLayout searchBox;
+    LinearLayout searchBox;
     LinearLayout profile;
+    ImageButton profileBotton;
 
 
     public void setToolbar(Toolbar toolbar) {
@@ -52,11 +55,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
         init();
 
 
-    }
 
+
+
+
+    }
 
 
     public void setTextView(TextView textView) {
@@ -65,12 +72,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private void init() {
 //GetMobileNumber from SharedPreferences
-        profile= findViewById(R.id. profile_linear);
-        profile.setOnClickListener(new View.OnClickListener() {
+
+        profileBotton= findViewById(R.id.profile);
+
+        profile = findViewById(R.id.profile_linear);
+//
+        profileBotton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
+
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                profileBotton.setClickable(false);
             }
         });
 
@@ -79,11 +94,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         searchBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+                searchBox.setClickable(false);
+
             }
         });
-
 
 
 //ViewPager
@@ -95,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 //BottomnNavigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomn_nav);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.vitrin);
         selectedItemId = R.id.vitrin;
@@ -140,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.my_video:
                 selectedItemId = R.id.my_video;
                 pager.setCurrentItem(1, true);
-                tvToolbar.setText("علاقه مندی ها");
+                tvToolbar.setText("ذخیره شده");
                 return true;
             case R.id.more:
                 selectedItemId = R.id.more;
@@ -225,5 +242,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 });
         // Showing Alert Message
         alertDialog.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        profileBotton.setClickable(true);
+        searchBox.setClickable(true);
     }
 }

@@ -100,7 +100,6 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onIteMRecycler(View view, String id, Result current, ChangeCategoryItem changeCategoryItem) {
                 Intent intent = new Intent(view.getContext(), ContentActivity.class);
-
                 intent.putExtra("VIDEOADRESS", current.getVideoFileAddress());
                 intent.putExtra("SUBJECT", current.getSubject());
                 intent.putExtra("BODY", current.getBody());

@@ -26,12 +26,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyVideoAdapter extends RecyclerView.Adapter<MyVideoAdapter.Holder> {
+public class SaveAdapter extends RecyclerView.Adapter<SaveAdapter.Holder> {
     private LayoutInflater inflater;
     List<com.a3rick.a3rick.models.models.Trick.favorites.Result> results;
 
 
-    public MyVideoAdapter(Context context, List<Result> results) {
+    public SaveAdapter(Context context, List<Result> results) {
         this.results = results;
         inflater = LayoutInflater.from(context);
     }
@@ -39,8 +39,8 @@ public class MyVideoAdapter extends RecyclerView.Adapter<MyVideoAdapter.Holder> 
 
     @NonNull
     @Override
-    public MyVideoAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Holder holder = new Holder(inflater.inflate(R.layout.row_myvideo_fragment, parent, false));
+    public SaveAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Holder holder = new Holder(inflater.inflate(R.layout.row_save_fragment, parent, false));
 
         holder.getFavorite();
         return holder;
@@ -48,7 +48,7 @@ public class MyVideoAdapter extends RecyclerView.Adapter<MyVideoAdapter.Holder> 
 
 
     @Override
-    public void onBindViewHolder(@NonNull MyVideoAdapter.Holder holder, final int position) {
+    public void onBindViewHolder(@NonNull SaveAdapter.Holder holder, final int position) {
         holder.setData(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,6 +67,7 @@ public class VitrinFragment extends Fragment {
                 intent.putExtra("POSOTION", 2);
                 intent.putExtra("TITLE", "زیبایی");
                 startActivity(intent);
+                seeAllBeauty.setClickable(false);
 
             }
         });
@@ -77,6 +78,7 @@ public class VitrinFragment extends Fragment {
                 intent.putExtra("POSOTION", 0);
                 intent.putExtra("TITLE", "آشپزی");
                 startActivity(intent);
+                seeAllCoock.setClickable(false);
             }
         });
         seeAllHouse.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +88,7 @@ public class VitrinFragment extends Fragment {
                 intent.putExtra("POSOTION", 1);
                 intent.putExtra("TITLE", "خانه داری");
                 startActivity(intent);
+                seeAllHouse.setClickable(false);
 
             }
         });
@@ -96,6 +99,7 @@ public class VitrinFragment extends Fragment {
                 intent.putExtra("POSOTION", 3);
                 intent.putExtra("TITLE", "سرگرمی");
                 startActivity(intent);
+                seeAllFun.setClickable(false);
             }
         });
 
@@ -176,4 +180,12 @@ public class VitrinFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        seeAllBeauty.setClickable(true);
+        seeAllFun.setClickable(true);
+        seeAllHouse.setClickable(true);
+        seeAllCoock.setClickable(true);
+    }
 }

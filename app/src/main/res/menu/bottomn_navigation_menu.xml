@@ -15,7 +15,7 @@
         android:id="@+id/categori"
         />
 
-    <item android:title="مورد علاقه"
+    <item android:title="ذخیره شده"
         android:icon="@drawable/videocam"
         android:id="@+id/my_video"
         />

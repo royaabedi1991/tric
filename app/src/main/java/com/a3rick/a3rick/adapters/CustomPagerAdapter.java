@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.a3rick.a3rick.fragments.CategoryFragment;
 import com.a3rick.a3rick.fragments.AboutFragment;
-import com.a3rick.a3rick.fragments.MyVideoFragment;
+import com.a3rick.a3rick.fragments.SaveFragment;
 import com.a3rick.a3rick.fragments.VitrinFragment;
 
 public class CustomPagerAdapter extends FragmentPagerAdapter {
@@ -24,7 +24,7 @@ public class CustomPagerAdapter extends FragmentPagerAdapter {
         fragments = new Fragment[]{
 
                 new AboutFragment(),
-                new MyVideoFragment(),
+                new SaveFragment(),
                 new CategoryFragment(),
                 new VitrinFragment(),
 

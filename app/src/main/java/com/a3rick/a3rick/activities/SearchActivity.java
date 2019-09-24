@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -107,6 +108,7 @@ public class SearchActivity extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     intent.putParcelableArrayListExtra("selectedChips", (ArrayList<? extends Parcelable>) selectedChips);
                     startActivity(intent);
+                    search.setClickable(false);
                     finish();
                 }else {
                     LayoutInflater inflater = getLayoutInflater();
@@ -117,7 +119,7 @@ public class SearchActivity extends AppCompatActivity {
                     text.setText("برچسبی انتخاب نکرده اید");
 
                     Toast toast = new Toast(getApplicationContext());
-//                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setGravity(Gravity.BOTTOM, 0, 0);
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.setView(layout);
                     toast.show();
@@ -137,6 +139,7 @@ public class SearchActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
         }
 
@@ -207,5 +210,9 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        search.setClickable(true);
+    }
 }
