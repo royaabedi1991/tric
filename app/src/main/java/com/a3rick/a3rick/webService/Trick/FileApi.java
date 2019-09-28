@@ -10,14 +10,20 @@ import com.a3rick.a3rick.models.models.Trick.favorites.GetFavoriteContentsResult
 import com.a3rick.a3rick.models.models.Trick.like_view.GetLikeDisLikeResult;
 import com.a3rick.a3rick.models.models.Trick.like_view.GetLikeStateResult;
 import com.a3rick.a3rick.models.models.Trick.like_view.GetViewCountResult;
+import com.a3rick.a3rick.models.models.Trick.profile.GetProfileInfoResult;
+import com.a3rick.a3rick.models.models.Trick.profile.UpdateProfileNameResult;
+import com.a3rick.a3rick.models.models.Trick.profile.UploadProfileImageResult;
 import com.a3rick.a3rick.models.models.Trick.tags.GetAllTagsResult;
 
 import java.util.List;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface FileApi {
@@ -83,5 +89,21 @@ public interface FileApi {
     @GET("Content/GetOrderedContentsWithTagIds")
     Call<GetContentsWithTagIdsResult> getContentWithTags(
             @Query("TagIds") List<Integer> TagIds, @Query("PageNumber") int PageNumber, @Query("RowCount") int RowCount, @Query("queryType") String QueryType);
+
+
+    @Headers("Token:0de0a7b0-5a86-447e-857b-17446c097de2")
+    @POST("Subscription/UpdateProfile")
+    Call<UpdateProfileNameResult> updateName(
+            @Query("FirstName") String FirstName, @Query("LastName") String LastName);
+
+
+    @Headers("Token:0de0a7b0-5a86-447e-857b-17446c097de2")
+    @GET("Subscription/GetProfileInfo")
+    Call<GetProfileInfoResult> getProfileInfo();
+
+    @Headers("Token:0de0a7b0-5a86-447e-857b-17446c097de2")
+    @Multipart
+    @POST("Subscription/UpdateProfileImage")
+    Call<UploadProfileImageResult> uploadImage(@Part("image\"; filename=\"myfile.jpg\" ") RequestBody file, @Part("desc") RequestBody desc);
 
 }

@@ -68,19 +68,20 @@
                     android:layout_height="match_parent"
                     android:layout_weight=".5"
                     android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="5dp">
 
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/pro_pro"
-                        android:layout_width="151dp"
-                        android:layout_height="146dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:src="@drawable/profilebanafsh"
-                        app:riv_corner_radius="100dp"
-
-
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="40dp"
+                        android:src="@drawable/addprofilephoto"
                         />
+
+
                 </LinearLayout>
 
 
@@ -122,10 +123,20 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:paddingRight="10dp"
-                            android:text="نام و نام خانوادگی"
                             android:textColor="#000"
                             android:textSize="17dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                           />
+                        <TextView
+                            android:id="@+id/lastName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="10dp"
+                            android:textColor="#000"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                           />
 
 
                     </LinearLayout>
@@ -322,39 +333,38 @@
             android:longClickable="true">
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical|bottom"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:src="@drawable/group_15266" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical|bottom"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/group_15266" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="75dp"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center_vertical|bottom"
-                    android:text="درباره ما"
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="75dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical|bottom"
+                android:text="درباره ما"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:textStyle="bold"
 
 
-                    >
+                >
 
-                </TextView>
+            </TextView>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical|bottom"
-                    android:layout_marginBottom="15dp"
-                    android:paddingLeft="15dp"
-                    android:src="@drawable/tik" />
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|bottom"
+                android:layout_marginBottom="15dp"
+                android:paddingLeft="15dp"
+                android:src="@drawable/tik" />
 
 
         </android.support.v7.widget.CardView>

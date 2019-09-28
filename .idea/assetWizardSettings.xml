@@ -133,7 +133,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_left_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_person_add_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -143,8 +143,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="6a229f" />
-                            <entry key="outputName" value="tik" />
+                            <entry key="color" value="9a6e9f" />
+                            <entry key="outputName" value="add_profile_photo" />
                             <entry key="sourceFile" value="C:\Users\pc" />
                           </map>
                         </option>
