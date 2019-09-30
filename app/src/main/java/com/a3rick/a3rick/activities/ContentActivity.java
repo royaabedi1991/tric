@@ -211,6 +211,7 @@ public class ContentActivity extends AppCompatActivity implements OnPreparedList
         orientation = getResources().getConfiguration().orientation;
         Picasso.with(this).load(imageFileAddress).fit().centerCrop().into(imageView);
 
+
     }
 
 

@@ -22,7 +22,8 @@
         <activity
             android:name=".activities.EditProfileActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
+            android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name=".activities.SaveActivity" />
         <activity
